@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>House Spa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/57265726f8.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- HOME -->
+    <section class="header">
+      <nav>
+        <div class="logo-nav-wrapper">
+          <a href="siteara.html"><img src="images/newimgs/House Spa_logo.png" alt="Logo"></a>
+          <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+              <li><a href="philosophy.html">Η ΦΙΛΟΣΟΦΙΑ ΜΟΥ</a></li>
+              <li><a href="products.html">ΤΑ ΚΑΛΛΥΝΤΙΚΑ ΜΑΣ</a></li>
+              <li class="dropdown">
+                <a href="services.html">ΦΡΟΝΤΙΔΑ ΔΕΡΜΑΤΟΣ</a>
+                <ul class="dropdown-content">
+                  <li><a href="services.html#face-care">ΠΡΟΣΩΠΟΥ</a></li>
+                  <li><a href="services.html#body-care">ΣΩΜΑΤΟΣ</a></li>
+                  <li><a href="services.html#shaving">ΑΠΟΤΡΙΧΩΣΗ</a></li>
+                </ul>
+              </li>
+              <li><a href="about.html">ABOUT</a></li>
+              <li class="dropdown">
+                <a href="appointment.html">ΡΑΝΤΕΒΟΥ</a>
+                <ul class="dropdown-content">
+                  <li><a href="appointment.html#guide">ΟΔΗΓΟΣ HOUSE SPA</a></li>
+                  <li><a href="appointment.html#book-it">BOOK IT</a></li>
+                </ul>
+              </li>
+              <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+          </div>
+          <div class="icons">
+            <a href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs" style="text-decoration : none;">
+              <i style="color: #7a6140;" class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+
+      <!-- services content -->
+        
+      <!--   
+        <p>Kamia perigrafh edw h liga logia gia thn proseggish h fwtografies h video etc etc</p>
+
+       <div class="row">
+          <div class="service-col">
+            <h3>Body Massage</h3>
+            <p> 
+              Liga logia, liges fwtografies, ligh agaph
+            </p>
+          </div>
+          <div class="service-col">
+            <h3>Facial Massage</h3>
+            <p> 
+              Liga logia, liges fwtografies, ligh agaph
+            </p>
+          </div>
+          <div class="service-col">
+            <h3>Krav Maga</h3>
+            <p> 
+              afesou sta xeria ths iwannas <3
+            </p>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="philosophy">
+        <h1 id="face-care"><strong>ΦΡΟΝΤΙΔΑ ΠΡΟΣΩΠΟΥ</strong></h1>
+        <br>
+        <div class="philosophy-item">
+          <video style="z-index: 0;" autoplay loop muted plays-inline class="back-video">
+            <source src="images/newimgs/face.mp4" type="video/mp4">
+          </video> 
+          <div class="philosophy-img">
+            <div class="service-img">
+                <img src="images/per1.jpg">
+            </div>
+          </div>
+          <div style="text-align: left;" class="philosophy-text">
+            <p style="color: #ecd8cd">Η Ολιστική Θεραπεία Προσώπου είναι μια μοναδική εμπειρία αναζωογόνησης που συνδυάζει την φυσική περιποίηση 
+              του δέρματος με την ενεργειακή ευεξία, χρησιμοποιώντας μια σειρά από φυσικές και εναλλακτικές θεραπείες. 
+              Αυτή η πολυαισθητηριακή προσέγγιση φέρνει ισορροπία σε σώμα, νου και ψυχή, ενώ προσφέρει εξαιρετικά οφέλη 
+              για την υγεία και την ομορφιά του προσώπου. 
+            </p>  
+            <p style="color: #ecd8cd">Τι περιλαμβάνει η θεραπεία: </p>   
+            <p style="color: #ecd8cd">Η θεραπεία ξεκινά με εισπνοές αιθέριων ελαίων για να προσφέρουν ηρεμία και χαλάρωση. Παράλληλα, ο χώρος εμπλουτίζεται 
+              με αρωματοθεραπεία που ενισχύει τη διάθεση και συμβάλλει στη γενική ευεξία. Έπειτα τοποθετούνται κρύσταλλοι με 
+              θεραπευτικές ιδιότητες πάνω σε ενεργειακά κέντρα ώστε να εξισορροπήσουμε την ενέργεια του σώματος και να ενισχύσουμε 
+              τη φυσική ομορφιά. Οι κρύσταλλοι βοηθούν στην απομάκρυνση της αρνητικής ενέργειας και προάγουν την αρμονία.
+              Μέσα στη θεραπεία ενσωματώνεται η ηχοθεραπεία, με χαλαρωτικούς ήχους που συντονίζουν τις συχνότητες του 
+              σώματος και βοηθούν στην απελευθέρωση του άγχους και της έντασης, δημιουργώντας ένα περιβάλλον βαθιάς χαλάρωσης.
+            </p>
+            <p style="color: #ecd8cd">Ξεκινάμε την περιποίηση του δέρματος εφαρμόζοντας μόνο φυσικά καλλυντικά, πλούσια σε θρεπτικά συστατικά που 
+              αναζωογονούν και θρέφουν το δέρμα. Τα αρώματά τους προέρχονται αποκλειστικά από αιθέρια έλαια.
+              Οι ειδικές τεχνικές μασάζ που χρησιμοποιώ είναι σχεδιασμένες για να τονώσουν την κυκλοφορία, να αποτοξινώσουν 
+              το δέρμα και να χαλαρώσουν τους μύες του προσώπου. Κάθε θεραπεία ενσωματώνει εναλλακτικές θεραπείες και ενεργειακή 
+              θεραπεία για να εξισορροπήσουμε τα ενεργειακά πεδία του σώματος. Αυτό βοηθά στην αποκατάσταση της αρμονίας 
+              και ενισχύει τα αποτελέσματα της θεραπείας, κάνοντάς σας να νιώσετε πλήρως ανανεωμένη. 
+              Επιτρέψτε μου να σας οδηγήσω σε ένα μονοπάτι αληθινής ευεξίας και λάμψης.
+            </p>
+          </div>
+        </div>
+
+        <h1 id="body-care"><strong>ΦΡΟΝΤΙΔΑ ΣΩΜΑΤΟΣ</strong></h1>
+        <br>
+        <div class="philosophy-item">  
+          <video style="z-index: 0;" autoplay loop muted plays-inline class="back-video">
+            <source src="images/newimgs/body.mp4" type="video/mp4">
+          </video> 
+          <div class="philosophy-text">
+            <p style="color: #ecd8cd;">
+              Η φόρμουλα της Whamisa είναι 100% φυτική και vegan.Είναι κατά κύριο λόγο αντίθετοι στη χρήση οποιωνδήποτε 
+              ζωικών και συνθετικών συστατικών, συμπεριλαμβανομένων των τεχνητών χρωστικών και αρωμάτων ωστόσο, 
+              τα προϊόντα είναι εμποτισμένα με αιθέρια έλαια υψηλής ποιότητας σε μικρή δόση για να παρέχουν μια αισθητική εμπειρία. 
+              <br>
+              Δεν αγάπα τη χημεία των συνθετικών συστατικών γι' αυτό χρησιμοποιεί: ρίζες, άνθη, σπόρους και φρούτα, 
+              η φύση αποτελεί την καρδιά των συνταγών. <br>
+              Η μοναδική άνυδρη καινοτόμος φόρμουλα, μας αρέσει γιατί τα καλλυντικά είναι συμπυκνωμένα που σημαίνει ότι χρειάζεσαι λιγότερη ποσότητα προϊόντος. 
+              Έτσι ως αποτέλεσμα υπάρχει μικρότερη παραγωγήμείωση σε σπαταλη ενέργειας,λιγότερες συσκευασίες για ανακύκλωση. 
+              <br>
+              Η χρήση χημικών συντηρητικών έχει αρκετές αρνητικές επιπτώσεις στην υγεία, συμπεριλαμβανομένου του αυξημένου 
+              κινδύνου συσσώρευσης τοξικών χημικών στο δέρμα μας. Η Whamisa παρασκευάζει μόνο με φυσικά συντηρητικά φυτικής προέλευσης. 
+              <br>
+            </p>
+          </div>
+          <div class="philosophy-img">
+            <div class="service-img">
+                <img src="images/per4.jpg">
+            </div>
+          </div>
+        </div>
+  
+        <h1 id="shaving"><strong>ΑΠΟΤΡΙΧΩΣΗ</strong></h1>
+        <br>
+        <div class="philosophy-item"> 
+          <video style="z-index: 0;" autoplay loop muted plays-inline class="back-video">
+            <source src="images/newimgs/body.mp4" type="video/mp4">
+          </video>  
+          <div class="philosophy-img">
+            <div class="service-img">
+                <img src="images/per2.jpg">
+            </div>
+          </div>
+          <div class="philosophy-text">
+            <p style="color: #ecd8cd;">
+              Μεταξύ άλλων, υποστηρίζουν την Good Neighbors, μια διεθνή ΜΚΟ που εργάζεται για την ανθρωπιστική ανάπτυξη. 
+              Μερικές από τις ανησυχίες τους είναι η καταπολέμηση της πείνας, η ανάπτυξη μιας υγιούς κοινότητας, 
+              η παροχή ιατρικής περίθαλψης και η προστασία και η εκπαίδευση των παιδιών. <br>
+              Είναι μέλος του 1% For The Planet και έχουν έναν μικρό αλλά σημαντικό ρόλο στην υποστήριξη της περιβαλλοντικής υπεράσπισης σε όλο τον κόσμο. 
+              <br>
+              Όλα τα προϊόντα και οι συσκευασίες της Whamisa δεσμεύονται στις αρχές της καθαρής ομορφιάς, κάθε μέρος των υλικών
+              έχει τη δυνατότητα ανακύκλωσης. Στη συσκευασία τα χαρτοκιβώτια είναι κατασκευασμένα με ανακυκλωμένο πολτό 
+              ζαχαροκάλαμου, ο οποίος είναι ανακυκλώσιμος και βιοδιασπώμενος, τυπωμένος με φιλικό προς το περιβάλλον 
+              και βιοδιασπώμενο μελάνι σόγιας. Οι περισσότερες από τις συσκευασίες περιποίησης της επιδερμίδας είναι γυαλί, 
+              χρησιμοποιώντας 25% ανακυκλωμένο γυαλί PCR, με οξο-βιοδιασπώμενο και ανακυκλώσιμο πλαστικό καπάκι. 
+              Τα πλαστικά μπουκάλια και τα βάζα είναι επίσης 100% ανακυκλώσιμαείναι επίσης ανακυκλώσιμα.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+    <!-- footer -->
+
+    <section class="footer" style="background-color: #f7d9bc;">
+      <p>See what I'm up to</p>
+      <div class="icons">
+        <a href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs" style="text-decoration : none;">
+          <i style="color: #7a6140;" class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+      <p>&copy; 2024 House Spa. All rights reserved. Made with love by yours truly.</p>
+    </section>
+
+    <script>
+      var navLinks = document.getElementById(navLinks)
+      
+      function showMenu(){
+        navLinks.style.right = "0";
+      }
+      
+      function hideMenu(){
+        navLinks.style.right = "-200px";
+      }
+    </script>
+  </body>
+</html>

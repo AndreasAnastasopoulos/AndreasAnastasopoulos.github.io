@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>House Spa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/57265726f8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" /> <!-- MAP --> 
+    <style>
+        #map {
+            height: 300px;
+            width: 100%;
+        }
+    </style>
+  </head>
+  <body>
+
+    <!-- HOME -->
+    <section class="header">
+      <nav>
+        <div class="logo-nav-wrapper">
+          <a href="siteara.html"><img src="images/newimgs/House Spa_logo.png" alt="Logo"></a>
+          <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+              <li><a href="philosophy.html">Η ΦΙΛΟΣΟΦΙΑ ΜΟΥ</a></li>
+              <li><a href="products.html">ΤΑ ΚΑΛΛΥΝΤΙΚΑ ΜΑΣ</a></li>
+              <li class="dropdown">
+                <a href="services.html">ΦΡΟΝΤΙΔΑ ΔΕΡΜΑΤΟΣ</a>
+                <ul class="dropdown-content">
+                  <li><a href="services.html#face-care">ΠΡΟΣΩΠΟΥ</a></li>
+                  <li><a href="services.html#body-care">ΣΩΜΑΤΟΣ</a></li>
+                  <li><a href="services.html#shaving">ΑΠΟΤΡΙΧΩΣΗ</a></li>
+                </ul>
+              </li>
+              <li><a href="about.html">ABOUT</a></li>
+              <li class="dropdown">
+                <a href="appointment.html">ΡΑΝΤΕΒΟΥ</a>
+                <ul class="dropdown-content">
+                  <li><a href="appointment.html#guide">ΟΔΗΓΟΣ HOUSE SPA</a></li>
+                  <li><a href="appointment.html#book-it">BOOK IT</a></li>
+                </ul>
+              </li>
+              <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+          </div>
+          <div class="icons">
+            <a href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs" style="text-decoration : none;">
+              <i style="color: #7a6140;" class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+
+
+      <!-- CONTACT US -->
+      <div class="contact-us">
+        <h1><strong>CONTACT ME</strong></h1>
+        <div class="row">
+          <div class="contact-col">
+            <div>
+              <i class="fa fa-phone"></i>
+              <span>
+                <h5 style="color: #7a6140;">+30 6947572316</h5>
+                 <p>Τετάρτη - Πέμπτη - Παρασκευή 9:00 - 17:00 <br> Σάββατο 9:00 - 15:00 </p>
+              </span>
+            </div>
+            <div>
+              <i class="fa fa-envelope-o"></i>
+               <span>
+                 <h5 style="color: #7a6140;">vardaki2552@gmail.com</h5>
+               </span>
+            </div>
+            <div>
+              <i class="fa fa-instagram"></i>
+              <span>
+                <a style="text-decoration: none;" href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs"><h5 style="color: #7a6140;">house_spa.holistic_beauty</h5></a>
+              </span>
+            </div>      
+          </div>
+          <div class="contact-col">
+            <div id="map"></div>
+            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+            <script>
+                // Initialize the map and set its view
+                var map = L.map('map').setView([37.839251, 23.827468], 14); // Coordinates of Holistic Spa Beauty
+        
+                // Load and display tile layer from OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+        
+                // Draw a circle with a radius of 1km
+                var circle = L.circle([37.839251, 23.827468], {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.1,
+                    radius: 1000 // 1km radius in meters
+                }).addTo(map);
+              </script>  
+          <!--  <form action="form_handler.php" method="post">
+              <input type="text" name="name" placeholder="Your name" required>
+              <input type="email" name="email" placeholder="Your email address" required>
+              <input type="text" name="subject" placeholder="Subject" required>
+              <textarea rows="8" name="message" placeholder="What's on your mind" required></textarea>
+              <button type="submit" class="hero-btn red-btn">Send Message</button>
+            </form> -->
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- footer -->
+    <section class="footer" style="background-color: #f7d9bc;">
+      <p>See what I'm up to</p>
+      <div class="icons">
+        <a href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs" style="text-decoration : none;">
+          <i style="color: #7a6140;" class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+      <p>&copy; 2024 House Spa. All rights reserved. Made with love by yours truly.</p>
+    </section>
+
+    <script>
+      var navLinks = document.getElementById(navLinks)
+      
+      function showMenu(){
+        navLinks.style.right = "0";
+      }
+      
+      function hideMenu(){
+        navLinks.style.right = "-200px";
+      }
+    </script>
+  </body>
+</html>
