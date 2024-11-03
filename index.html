@@ -1,75 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>House Spa</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/57265726f8.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <!-- HOME -->
-    <section style="background-color: transparent;" class="header">
-      <video autoplay loop muted plays-inline class="back-video">
-          <source src="images/newimgs/home.mp4" type="video/mp4">
-      </video>
-      <nav>
-        <div class="logo-nav-wrapper">
-          <a href="index.html"><img src="images/newimgs/House Spa_logo.png" alt="Logo"></a>
-          <div class="nav-links" id="navLinks">
-            <i class="fa fa-times" onclick="hideMenu()"></i>
-            <ul>
-              <li><a style="color: #f7d9bc;" href="philosophy.html">Η ΦΙΛΟΣΟΦΙΑ ΜΟΥ</a></li>
-              <li><a style="color: #f7d9bc;" href="products.html">ΤΑ ΚΑΛΛΥΝΤΙΚΑ ΜΑΣ</a></li>
-              <li class="dropdown">
-                <a style="color: #f7d9bc;" href="services.html">ΦΡΟΝΤΙΔΑ ΔΕΡΜΑΤΟΣ</a>
-                <ul class="dropdown-content">
-                  <li><a style="color: #f7d9bc;" href="services.html#body-care">ΠΡΟΣΩΠΟΥ</a></li>
-                  <li><a style="color: #f7d9bc;" href="services.html#face-care">ΣΩΜΑΤΟΣ</a></li>
-                  <li><a style="color: #f7d9bc;" href="services.html#shaving">ΑΠΟΤΡΙΧΩΣΗ</a></li>
-                </ul>
-              </li>
-              <li><a style="color: #f7d9bc;" href="about.html">ABOUT</a></li>
-              <li class="dropdown">
-                <a style="color: #f7d9bc;" href="appointment.html">ΡΑΝΤΕΒΟΥ</a>
-                <ul class="dropdown-content">
-                  <li><a style="color: #f7d9bc;" href="appointment.html#guide">ΟΔΗΓΟΣ HOUSE SPA</a></li>
-                  <li><a style="color: #f7d9bc;" href="appointment.html#book-it">BOOK IT</a></li>
-                </ul>
-              </li>
-              <li><a style="color: #f7d9bc;" href="contact.html">CONTACT</a></li>
-            </ul>
-          </div>
-          <div class="icons">
-            <a href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs" style="text-decoration : none;">
-              <i style="color: #f7d9bc;" class="fa-brands fa-instagram"></i>
-            </a>
-          </div>
-        </div>
-        <i class="fa fa-bars" onclick="showMenu()"></i>
-      </nav>
 
-      <div class="center-content">
-        <div class="text-box">
-          <h1>HOLISTIC BEAUTY</h1>
-          <a href="about.html" class="hero-btn">Get to know me</a>
+<head>
+  <title>House Spa</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styleaki.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/57265726f8.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="main-page">
+  <video autoplay loop muted plays-inline class="back-video">
+    <source src="images/newimgs/home.mp4" type="video/mp4">
+  </video>
+
+  <nav>
+    <div class="logo-nav-insta-wrapper">
+      <div class="icons">
+        <a style="color: #f7d9bc;"
+          href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+      <div>
+        <a href="index.html">
+          <img src="images/newimgs/House Spa_logo.png" alt="Logo">
+        </a>
+      </div>
+      <div class="menu-wrap">
+        <input type="checkbox" class="toggler">
+        <div class="hamburger">
+          <div style="background: #f7d9bc;"></div>
+        </div>
+        <div class="menu">
+          <div>
+            <div>
+              <ul>
+                <li><a style="color: #f7d9bc;" class="underline-hover-btn" href="#">Η ΦΙΛΟΣΟΦΙΑ ΜΟΥ</a></li>
+                <li><a style="color: #f7d9bc;" class="underline-hover-btn" href="products.html">ΤΑ ΚΑΛΛΥΝΤΙΚΑ ΜΑΣ</a></li>
+                <li><a style="color: #f7d9bc;" class="underline-hover-btn" href="#">ABOUT ME</a></li>
+                <li><a style="color: #f7d9bc;" class="underline-hover-btn" href="#">ΟΔΗΓΟΣ HOUSE SPA</a></li>
+                <li><a style="color: #f7d9bc;" class="underline-hover-btn" href="#">CONTACT</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-    
-    <script>
-      var navLinks = document.getElementById(navLinks)
-      
-      function showMenu(){
-        navLinks.style.right = "0";
-      }
-      
-      function hideMenu(){
-        navLinks.style.right = "-200px";
-      }
-    </script>
-  </body>
+    </div>
+  </nav>
+
+
+  <div class="center-content">
+    <div class="text-box">
+      <h1>HOLISTIC BEAUTY</h1>
+      <a href="about.html" class="hero-btn">Get to know me</a>
+    </div>
+  </div>
+
+</body>
+
 </html>
