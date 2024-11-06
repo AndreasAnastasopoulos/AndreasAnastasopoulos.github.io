@@ -1,150 +1,377 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="gr">
+
+<head>
     <title>House Spa</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleaki.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/57265726f8.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <!-- HOME -->
-    <section class="header">
-      <nav>
-        <div class="logo-nav-wrapper">
-          <a href="index.html"><img src="images/newimgs/House Spa_logo.png" alt="Logo"></a>
-          <div class="nav-links" id="navLinks">
-            <i class="fa fa-times" onclick="hideMenu()"></i>
-            <ul>
-              <li><a href="philosophy.html">Η ΦΙΛΟΣΟΦΙΑ ΜΟΥ</a></li>
-              <li><a href="products.html">ΤΑ ΚΑΛΛΥΝΤΙΚΑ ΜΑΣ</a></li>
-              <li class="dropdown">
-                <a href="services.html">ΦΡΟΝΤΙΔΑ ΔΕΡΜΑΤΟΣ</a>
-                <ul class="dropdown-content">
-                  <li><a href="services.html#face-care">ΠΡΟΣΩΠΟΥ</a></li>
-                  <li><a href="services.html#body-care">ΣΩΜΑΤΟΣ</a></li>
-                  <li><a href="services.html#shaving">ΑΠΟΤΡΙΧΩΣΗ</a></li>
-                </ul>
-              </li>
-              <li><a href="about.html">ABOUT</a></li>
-              <li class="dropdown">
-                <a href="appointment.html">ΡΑΝΤΕΒΟΥ</a>
-                <ul class="dropdown-content">
-                  <li><a href="appointment.html#guide">ΟΔΗΓΟΣ HOUSE SPA</a></li>
-                  <li><a href="appointment.html#book-it">BOOK IT</a></li>
-                </ul>
-              </li>
-              <li><a href="contact.html">CONTACT</a></li>
-            </ul>
-          </div>
-          <div class="icons">
-            <a href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs" style="text-decoration : none;">
-              <i style="color: #7a6140;" class="fa-brands fa-instagram"></i>
-            </a>
-          </div>
-        </div>
-        <i class="fa fa-bars" onclick="showMenu()"></i>
-      </nav>
-    
-    <div class="philosophy">
-      <h1><strong>Η ΦΙΛΟΣΟΦΙΑ ΜΟΥ</strong></h1>
-      <h5 style="color:#7a6140;">ΕΝΑ ΟΛΙΣΤΙΚΟ ΤΑΞΙΔΙ ΜΕ ΣΤΟΧΟ ΤΗΝ ΑΛΗΘΙΝΗ ΦΡΟΝΤΙΔΑ Σ' ΟΛΑ ΤΑ ΕΠΙΠΕΔΑ, ΕΙΝΑΙ ΚΑΤΙ ΠΑΡΑΠΑΝΩ ΑΠΟ ΜΙΑ ΠΕΡΙΠΟΙΗΣΗ ΠΡΟΣΩΠΟΥ. 
-          <br> ΕΙΝΑΙ ΜΙΑ ΣΤΙΓΜΗ ΑΠΛΑ ΓΙΑ ΝΑ ΥΠΑΡΧΕΙΣ. ΕΙΝΑΙ ΣΥΝΔΕΣΗ ΤΩΝ ΔΥΟ. 
-      </h5>
-      <br> <br>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- EXPERIENCE SECTION -->
+</head>
 
-      <!-- Philosophy section with text and image -->
-      <div class="philosophy-item">
-        <div class="philosophy-img">
-          <img style="width: 500px;" src="images/newimgs/prasini_omorfia.jpg" alt="Green Beauty">
-        </div>
-        <div class="philosophy-text">
-            <p>
-              <strong>ΕΞΑΤΟΜΙΚΕΥΜΕΝΗ ΕΜΠΕΙΡΙΑ</strong>
-              <br><br>
-              Ολιστική περιποίηση δέρματος και ολοκληρωμένη εκπαίδευση. <br>Προσαρμοσμένο <strong>μόνο για εσάς</strong>, 
-              για τον δικό σας τύπο δέρματος,<br>υποστηρίζοντας το μικροβίωμα, κάνοντας το δέρμα σας υγιές και ζωντανό.
-            </p>
-            <br><br>
-            <p>
-              <strong>ΑΛΗΘΙΝΗ ΦΡΟΝΤΙΔΑ</strong>
-              <br><br>
-              Γνωρίζω πόσο πολύτιμος είναι ο χρόνος σας και τα χρήματα σας. 
-              <br>Για αυτό σε κάθε θεραπεία <strong>είμαι παρούσα στη στιγμή, σώμα & ψυχή</strong>.
-            </p>
-        </div>
-      </div>
-  
-      <div class="philosophy-item">
-          <video style="z-index: 0;" autoplay loop muted plays-inline class="back-video">
-            <source src="images/newimgs/field.mp4" type="video/mp4">
-          </video> 
-          <div class="philosophy-text">
-            <p style="color: #ecd8cd;">
-              <strong>CRUELTY-FREE, ΜΗ ΤΟΞΙΚΗ ΦΟΡΜΟΥΛΑ</strong>
-              <br><br>
-              Ακόμα και στις μέρες μας κάποια καλλυντικά προϊόντα δοκιμάζονται σε ζώα. Αυτό δεν ισχύει για το House spa.
-              <br><a style="text-decoration-color: #9bc5d9; color: #9bc5d9;" href="products.html"><strong>Τα προϊόντα μας</strong></a> είναι μη τοξικά και είναι γεμάτα με βότανα, φρούτα, ρίζες, άνθη, καρπούς, έλαια & αιθέρια έλαια. 
-              <br>Ισχυρά εκχυλίσματα και αφεψήματα ολόκληρων φυτών.
-            </p>
-            <br><br>
-            <p style="color: #ecd8cd;">
-              <strong>ΠΡΑΣΙΝΗ ΟΜΟΡΦΙΑ</strong>
-              <br><br>
-              Φυσικά, βιολογικά προϊόντα με πιστοποίηση,<br>που σέβονται τον άνθρωπο και υποστηρίζουν τη βιώσιμη ομορφιά.
-            </p>
-          </div>
-          <div class="philosophy-img">
-            <img src="images/newimgs/true_care.jpg" alt="True Care">
-          </div>
-      </div>
+<body>
 
-      <div class="philosophy-item">
-        <div class="philosophy-img">
-          <img style="width: 450px;" src="images/philosophy.jpg" alt="Philosophy">
-        </div>        
-        <div class="philosophy-text">
-            <p>
-              <strong>ΑΓΑΠΩ ΑΥΤΟ ΠΟΥ ΚΑΝΩ</strong>
-              <br><br>
-              Το <strong>House Spa Holistic Beauty</strong> είναι περήφανο που προσφέρει ασφαλείς,
-              <br>καθαρές και ισχυρές φυσικές λύσεις για το δέρμα, την αυτοφροντίδα 
-              <br>και προϊόντα χωρίς συμβιβασμούς στην ποιότητα,την ομορφιά και την υγεία.
-            </p>
+    <nav>
+        <div class="logo-nav-insta-wrapper">
+            <div class="icons">
+                <a
+                    href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+            <div>
+                <a href="index.html">
+                    <img src="images/newimgs/House Spa_logo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="menu-wrap">
+                <input type="checkbox" class="toggler">
+                <div class="hamburger">
+                    <div></div>
+                </div>
+                <div class="menu">
+                    <div>
+                        <div>
+                            <ul>
+                                <li><a class="underline-hover-btn" href="philosophy.html">Η ΦΙΛΟΣΟΦΙΑ ΜΟΥ</a></li>
+                                <li><a class="underline-hover-btn" href="appointment.html">ΚΡΑΤΗΣΗ</a></li>
+                                <li><a class="underline-hover-btn" href="contact.html">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-      </div>
+    </nav>
+
+    <div class="main">
+        <h1>Η ΦΙΛΟΣΟΦΙΑ ΜΟΥ</h1>
+        <div class="main-container">
+            <h3 class="philosophy-subtitle">«Ένα ολιστικό ταξίδι με στόχο την αληθινή φροντίδα σ' όλα τα επίπεδα,
+                είναι κάτι παραπάνω από μία περιποίηση προσώπου. Είναι μία στιγμή απλά για να υπάρχεις. Είναι σύνδεση
+                των δύο.»
+            </h3>
+        </div>
+        <div class="main-container">
+            <div class="photo-gallery">
+                <div class="column">
+                    <div class="photo">
+                        <div class="container">
+                            <img src="images/newimgs/true_care.jpg" alt="True Care">
+                            <div class="text-content">
+                                <p>
+                                    <!-- ΑΛΗΘΙΝΗ ΦΡΟΝΤΙΔΑ <br><br> -->
+                                    Γνωρίζω πόσο πολύτιμος είναι ο χρόνος και τα χρήματα σας.
+                                    Για αυτό σε κάθε θεραπεία είμαι παρούσα στη στιγμή, σώμα & ψυχή.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo">
+                        <div class="container">
+                            <img src="images/newimgs/nature2.jpg" alt="Nature 2">
+                            <div class="text-content">
+                                <p>
+                                    <!-- CRUELTY-FREE, ΜΗ ΤΟΞΙΚΗ ΦΟΡΜΟΥΛΑ <br><br> -->
+                                    Ακόμα και στις μέρες μας κάποια καλλυντικά προϊόντα δοκιμάζονται σε ζώα.
+                                    Αυτό δεν ισχύει για το House spa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-only-tablet">
+                        <div class="container">
+                            <img src="images/newimgs/mallaksi3.jpg" alt="Massage 3">
+                            <div class="text-content">
+                                <p>
+                                    <!-- ΠΡΑΣΙΝΗ ΟΜΟΡΦΙΑ <br><br> -->
+                                    Φυσικά, βιολογικά προϊόντα με πιστοποίηση, που σέβονται τον άνθρωπο και υποστηρίζουν
+                                    τη βιώσιμη ομορφιά.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="photo">
+                        <div class="container">
+                            <img src="images/newimgs/prasini_omorfia.jpg" alt="Green Beauty">
+                            <div class="text-content">
+                                <p>
+                                    <!-- ΠΡΑΣΙΝΗ ΟΜΟΡΦΙΑ <br><br> -->
+                                    Ολιστική περιποίηση δέρματος και ολοκληρωμένη εκπαίδευση. Προσαρμοσμένο μόνο για εσάς, 
+                                    για τον δικό σας τύπο δέρματος, υποστηρίζοντας το μικροβίωμα, κάνοντας το δέρμα σας υγιές και ζωντανό.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo">
+                        <div class="container">
+                            <img src="images/iwanna.jpeg" alt="About me">
+                            <div class="text-content">
+                                <p>
+                                    Είμαι η Ιωάννα Βαρδάκη. <br> Tο πάθος μου για τη φυσική ομορφιά και την ολιστική
+                                    ευεξία με
+                                    οδήγησαν στο να αφιερωθώ στην εκπαίδευση και την πρακτική εφαρμογή θεραπειών που
+                                    αναδεικνύουν τη συνολική ευεξία
+                                    του σώματος και του πνεύματος.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-only-tablet">
+                        <div class="container">
+                            <img src="images/newimgs/mallaksi2.jpg" alt="Massage 2">
+                            <div class="text-content">
+                                <p>
+                                    <a class="inline-fancy" href="#products">Τα προϊόντα μας</a> είναι μη τοξικά και είναι γεμάτα με
+                                    βότανα, φρούτα, ρίζες,
+                                    άνθη, καρπούς, έλαια & αιθέρια έλαια. Ισχυρά εκχυλίσματα και αφεψήματα ολόκληρων
+                                    φυτών.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="photo-not-tablet">
+                        <div class="container">
+                            <img src="images/newimgs/mallaksi3.jpg" alt="Massage 3">
+                            <div class="text-content">
+                                <p>
+                                    <!-- ΠΡΑΣΙΝΗ ΟΜΟΡΦΙΑ <br><br> -->
+                                    Φυσικά, βιολογικά προϊόντα με πιστοποίηση, που σέβονται τον άνθρωπο και υποστηρίζουν
+                                    τη βιώσιμη ομορφιά.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo-not-tablet">
+                        <div class="container">
+                            <img src="images/newimgs/mallaksi2.jpg" alt="Massage 2">
+                            <div class="text-content">
+                                <p>
+                                    <a href="#products">Τα προϊόντα μας</a> είναι μη τοξικά και είναι γεμάτα με
+                                    βότανα, φρούτα, ρίζες,
+                                    άνθη, καρπούς, έλαια & αιθέρια έλαια. Ισχυρά εκχυλίσματα και αφεψήματα ολόκληρων
+                                    φυτών.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXPERIENCE SECTION  -->
+        <section class="experience">
+            <div class="content">
+                <h1 style="color: #E0D0C1;">Η ΚΑΤΑΡΤΙΣΗ ΜΟΥ ΣΤΗΝ ΟΛΙΣΤΙΚΗ ΘΕΡΑΠΕΙΑ</h1>
+                <ul>
+                    <li>
+                        <div class="experience-content hidden">
+                            <h2>ΕΚΠΑΙΔΕΥΣΗ ΣΤΗΝ ΑΙΣΘΗΤΙΚΗ</h2>
+                            <p><br>Έχω ολοκληρώσει την εκπαίδευσή μου στην Αισθητική με ειδίκευση στις φυσικές και
+                                εναλλακτικές θεραπείες.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="experience-content hidden">
+                            <h2>ΘΕΡΑΠΕΥΤΙΚΗ ΜΑΛΑΞΗ</h2>
+                            <p><br>Έχω εκπαιδευτεί στην τεχνική της θεραπευτικής μάλαξης, η οποία εστιάζει στη χαλάρωση
+                                των μυών, την
+                                ανακούφιση από το άγχος και την ενίσχυση της
+                                κυκλοφορίας του αίματος. Αυτή η προσέγγιση βοηθά στην αποκατάσταση της ισορροπίας στο
+                                σώμα και στην προαγωγή
+                                της συνολικής υγείας.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="experience-content hidden">
+                            <h2 class="lg-view">ΕΞΕΙΔΙΚΕΥΣΗ ΣΤΗΝ ΚΡΥΣΤΑΛΛΟΘΕΡΑΠΕΙΑ ΚΑΙ ΗΧΟΘΕΡΑΠΕΙΑ</h2>
+                            <h2 class="sm-view">ΕΞΕΙΔΙΚΕΥΣΗ ΣΤΗΝ ΘΕΡΑΠΕΙΑ ΚΡΥΣΤΑΛΛΩΝ ΚΑΙ ΗΧΟΘΕΡΑΠΕΙΑ</h2>
+                            <p><br>Η εκπαίδευσή μου περιλαμβάνει τη χρήση κρυστάλλων και ήχων για τη θεραπεία του
+                                σώματος και της ψυχής.
+                                Αυτές οι τεχνικές με βοηθούν να προσφέρω θεραπείες που εστιάζουν στην ενεργειακή
+                                ισορροπία και στην
+                                αποκατάσταση της εσωτερικής γαλήνης.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="experience-content hidden">
+                            <h2>ΑΙΣΘΗΤΙΚΟΣ ΒΕΛΟΝΙΣΜΟΣ</h2>
+                            <p><br>Είμαι εξειδικευμένη στον αισθητικό βελονισμό, μια φυσική μέθοδο που βοηθά στη
+                                βελτίωση της κυκλοφορίας, στη
+                                σύσφιξη του δέρματος και στην
+                                αποκατάσταση της φυσικής λάμψης.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="experience-content hidden">
+                            <h2>ΤΕΧΝΙΚΕΣ ΜΑΣΑΖ</h2>
+                            <p><br>Έχω εκπαιδευτεί σε διάφορες τεχνικές μασάζ που προάγουν τη χαλάρωση, την αποτοξίνωση
+                                και τη νεότητα του
+                                δέρματος.
+                                Από τη λεμφική αποστράγγιση μέχρι το βαθύ μασάζ ιστών, οι τεχνικές μου συμβάλλουν στην
+                                υγεία του δέρματος
+                                και την αναζωογόνηση του σώματος.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="experience-content hidden">
+                            <h2>ΠΑΡΑΣΚΕΥΗ ΦΥΣΙΚΩΝ ΚΑΛΛΥΝΤΙΚΩΝ</h2>
+                            <p><br>Με ιδιαίτερο ενδιαφέρον για τη φυσική φροντίδα του δέρματος, έχω εκπαιδευτεί στην
+                                παρασκευή φυσικών
+                                καλλυντικών
+                                και σωστή χρήση αιθέριων ελαίων.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="main-container">
+            <h3 class="philosophy-subtitle">«Η φιλοσοφία μου είναι ότι η ομορφιά και η ευεξία είναι αλληλένδετες. Η
+                εκπαίδευσή
+                μου στις παραπάνω θεραπείες
+                με βοηθά να προσφέρω στους πελάτες μου μια ολοκληρωμένη προσέγγιση που προάγει τη φυσική ομορφιά, την
+                εσωτερική ισορροπία και την γενική ευεξία.
+                Συνεχίζω να επεκτείνω τις γνώσεις μου και να ενσωματώνω νέες τεχνικές για να παρέχω τις πιο
+                αποτελεσματικές
+                και καινοτόμες θεραπείες.»
+            </h3>
+        </div>
+
+        <h1 style="margin-top: 0.9rem;" id="products">ΤΑ ΚΑΛΛΥΝΤΙΚΑ ΜΑΣ</h1>
+        <div style="margin-top: 0;" class="main-container">
+            <div class="image-container">
+                <img src="images/whamisa.jpg" alt="Whamisa Product Properties">
+            </div>
+            <div class="scrollable-card">
+                <div class="card">
+                    <p>
+                        Η <strong>🌿WHAMISA🌿</strong> είναι η πρώτη πιστοποιημένη μάρκα βιολογικών και φυσικών
+                        προϊόντων,
+                        και ένας από τους πρωτοπόρους στον τομέα της πράσινης ομορφιάς. Όλα τα προϊόντα Whamisa είναι
+                        εντελώς
+                        απαλλαγμένα από νερό, αυτό είναι ένα από τα ισχυρότερα χαρακτηριστικά της.
+                        Τα άνυδρα προϊόντα είναι πολύ σπάνια στην αγορά καλλυντικών επειδή αντί για νερό, απαιτούν ένα
+                        φυσικό
+                        υποκατάστατο που είναι πάντα πιο ακριβό από το ίδιο το νερό.
+                    </p>
+                    <i style="padding-right: 1.2rem; font-size: 1.8rem; align-self: end; color: #E0D0C1;"
+                        class="fa-solid fa-arrow-left"></i>
+                </div>
+                <div class="card">
+                    <p>
+                        Είναι πρωτοπόροι με <strong>κατοχυρωμένη πατέντα ευρεσιτεχνίας</strong> για τη μέθοδο της
+                        ζύμωσης,
+                        προσθέτοντας ένα βακτήριο που
+                        αναπτύχθηκε για τα καλλυντικά τους. Η ζύμωση ενισχύει την ισχύ των συστατικών και έτσι
+                        επιτυγχάνεται
+                        η
+                        ανώτερη
+                        απορρόφηση των συστατικών στα βαθύτερα στρώματα του δέρματος. Κάτι που δε μπορεί πολλές φορές να
+                        επιτευχθεί συνθετικά.
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                        Η φόρμουλα της Whamisa είναι <strong>100% φυτική και vegan</strong>. Είναι κατά κύριο λόγο
+                        αντίθετοι
+                        στη
+                        χρήση οποιωνδήποτε
+                        ζωικών και συνθετικών συστατικών, συμπεριλαμβανομένων των τεχνητών χρωστικών και αρωμάτων,
+                        ωστόσο,
+                        τα προϊόντα είναι εμποτισμένα με αιθέρια έλαια υψηλής ποιότητας σε μικρή δόση ώστε να παρέχουν
+                        μια
+                        αισθητική εμπειρία.
+                        Δεν αγάπα τη χημεία των συνθετικών συστατικών γι' αυτό χρησιμοποιεί: ρίζες, άνθη, σπόρους και
+                        φρούτα. Η φύση αποτελεί την καρδιά των συνταγών.
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                        Η μοναδική <strong>άνυδρη καινοτόμος φόρμουλα</strong>, μας αρέσει γιατί τα καλλυντικά είναι
+                        συμπυκνωμένα, που σημαίνει ότι χρειάζεσαι λιγότερη ποσότητα προϊόντος.
+                        Ως αποτέλεσμα, υπάρχει μείωση σε σπαταλη ενέργειας και λιγότερες συσκευασίες για ανακύκλωση.
+                        Η χρήση χημικών συντηρητικών έχει αρκετές αρνητικές επιπτώσεις στην υγεία, συμπεριλαμβανομένου
+                        του
+                        αυξημένου κινδύνου συσσώρευσης τοξικών χημικών στο δέρμα μας. Η Whamisa παρασκευάζει μόνο με
+                        φυσικά
+                        συντηρητικά
+                        φυτικής προέλευσης.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-  
 
 
 
-  </section>
+    <!-- LEFTOVER PHOTOS -->
+    <!--    <div class="photo">
+                        <img src="images/newimgs/nature3.jpg" alt="Nature 3">
+                    </div> 
+            <div class="photo">
+                        <img src="images/newimgs/echo3.jpg" alt="Echo 3">
+                    </div> 
 
-    <!-- footer -->
+            <div class="photo">
+                        <img src="images/newimgs/echo1.jpg" alt="Echo 1">
+                    </div> 
 
-    <section class="footer" style="background-color: #f7d9bc;">
-      <p>See what I'm up to</p>
-      <div class="icons">
-        <a href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs" style="text-decoration : none;">
-          <i style="color: #7a6140;" class="fa-brands fa-instagram"></i>
-        </a>
-      </div>
-      <p>&copy; 2024 House Spa. All rights reserved. Made with love by yours truly.</p>
-    </section>
+            <div class="photo">
+                        <img src="images/newimgs/mallaksi1.jpg" alt="Massage 1">
+                        
+                    </div>
+            <div class="photo">
+                        <img src="images/newimgs/echo2.jpg" alt="Echo 2">
+                    </div>
+            <div class="photo">
+                        <img src="images/newimgs/nature1.jpg" alt="Nature 1">
+                    </div> -->
+
+    <footer>
+        <p>See what I'm up to</p>
+        <div class="footer-icons">
+            <a
+                href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+        <p>&copy; 2024 House Spa Holistic Beauty. All rights reserved. <br> Made with love by yours truly.</p>
+    </footer>
+
 
     <script>
-      var navLinks = document.getElementById(navLinks)
-      
-      function showMenu(){
-        navLinks.style.right = "0";
-      }
-      
-      function hideMenu(){
-        navLinks.style.right = "-200px";
-      }
+        $(document).ready(function () {
+            // Function to reveal hidden experience elements on scroll
+            $(window).scroll(function () {
+                var bottom_of_window = $(window).scrollTop() + $(window).height();
+                // Check the location of each element hidden */
+                $('.experience .content .hidden').each(function (i) {
+
+                    var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+
+                    /* If the object is completely visible in the window, fadeIn it */
+                    if (bottom_of_window > bottom_of_object) {
+
+                        $(this).animate({
+                            'opacity': '1',
+                            'margin-left': '0'
+                        }, 600);
+                    }
+                });
+            });
+        });
     </script>
-  </body>
+</body>
+
 </html>

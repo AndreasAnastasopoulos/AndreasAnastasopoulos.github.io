@@ -1,143 +1,141 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="gr">
+
+<head>
     <title>House Spa</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleaki.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/57265726f8.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" /> <!-- MAP --> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" /> <!-- MAP -->
     <style>
         #map {
-            height: 300px;
+            height: 324px;
             width: 100%;
+            border-radius: 12px;
+            z-index: 0;
         }
     </style>
-  </head>
-  <body>
+</head>
 
-    <!-- HOME -->
-    <section class="header">
-      <nav>
-        <div class="logo-nav-wrapper">
-          <a href="index.html"><img src="images/newimgs/House Spa_logo.png" alt="Logo"></a>
-          <div class="nav-links" id="navLinks">
-            <i class="fa fa-times" onclick="hideMenu()"></i>
-            <ul>
-              <li><a href="philosophy.html">Η ΦΙΛΟΣΟΦΙΑ ΜΟΥ</a></li>
-              <li><a href="products.html">ΤΑ ΚΑΛΛΥΝΤΙΚΑ ΜΑΣ</a></li>
-              <li class="dropdown">
-                <a href="services.html">ΦΡΟΝΤΙΔΑ ΔΕΡΜΑΤΟΣ</a>
-                <ul class="dropdown-content">
-                  <li><a href="services.html#face-care">ΠΡΟΣΩΠΟΥ</a></li>
-                  <li><a href="services.html#body-care">ΣΩΜΑΤΟΣ</a></li>
-                  <li><a href="services.html#shaving">ΑΠΟΤΡΙΧΩΣΗ</a></li>
-                </ul>
-              </li>
-              <li><a href="about.html">ABOUT</a></li>
-              <li class="dropdown">
-                <a href="appointment.html">ΡΑΝΤΕΒΟΥ</a>
-                <ul class="dropdown-content">
-                  <li><a href="appointment.html#guide">ΟΔΗΓΟΣ HOUSE SPA</a></li>
-                  <li><a href="appointment.html#book-it">BOOK IT</a></li>
-                </ul>
-              </li>
-              <li><a href="contact.html">CONTACT</a></li>
-            </ul>
-          </div>
-          <div class="icons">
-            <a href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs" style="text-decoration : none;">
-              <i style="color: #7a6140;" class="fa-brands fa-instagram"></i>
-            </a>
-          </div>
+<body>
+
+    <nav>
+        <div class="logo-nav-insta-wrapper">
+            <div class="icons">
+                <a
+                    href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+            <div>
+                <a href="index.html">
+                    <img src="images/newimgs/House Spa_logo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="menu-wrap">
+                <input type="checkbox" class="toggler">
+                <div class="hamburger">
+                    <div></div>
+                </div>
+                <div class="menu">
+                    <div>
+                        <div>
+                            <ul>
+                                <li><a class="underline-hover-btn" href="philosophy.html">Η ΦΙΛΟΣΟΦΙΑ ΜΟΥ</a></li>
+                                <li><a class="underline-hover-btn" href="appointment.html">ΚΡΑΤΗΣΗ</a></li>
+                                <li><a class="underline-hover-btn" href="contact.html">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <i class="fa fa-bars" onclick="showMenu()"></i>
-      </nav>
+    </nav>
 
-
-      <!-- CONTACT US -->
-      <div class="contact-us">
-        <h1><strong>CONTACT ME</strong></h1>
-        <div class="row">
-          <div class="contact-col">
-            <div>
-              <i class="fa fa-phone"></i>
-              <span>
-                <h5 style="color: #7a6140;">+30 6947572316</h5>
-                 <p>Τετάρτη - Πέμπτη - Παρασκευή 9:00 - 17:00 <br> Σάββατο 9:00 - 15:00 </p>
-              </span>
+    <div class="main">
+        <div class="main-container">
+            <h1>ΕΠΙΚΟΙΝΩΝΙΑ</h1>
+        </div>
+        <div class="main-container">
+    <!-- CONTACT US -->
+    <div class="contact-us">
+        <div class="contact-info">
+            <h3 style="padding-bottom: 8px; border-bottom: 2px solid; align-self: center; color: #E0D0C1;">Ιωάννα Βαρδάκη,<br><span>Ολιστική Θεραπεύτρια</span></h3>
+            <div style="padding-top: 8px;">
+                <i class="fa fa-phone"></i>
+                <span>
+                    <a class="inline-fancy" href="tel:" title="Μη διστάσεις να με καλέσεις">+30 6947572316</a>
+                </span>
             </div>
             <div>
-              <i class="fa fa-envelope-o"></i>
-               <span>
-                 <h5 style="color: #7a6140;">vardaki2552@gmail.com</h5>
-               </span>
+                <i class="fa-solid fa-people-arrows"></i>
+                <span>
+                    <p>Δευτέρα - Τετάρτη - Πέμπτη - <br> Παρασκευή 9:00 - 17:00 <br> Σάββατο 9:00 - 15:00</p>
+                </span>
             </div>
             <div>
-              <i class="fa fa-instagram"></i>
-              <span>
-                <a style="text-decoration: none;" href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs"><h5 style="color: #7a6140;">house_spa.holistic_beauty</h5></a>
-              </span>
-            </div>      
-          </div>
-          <div class="contact-col">
+                <i class="fa fa-envelope-o"></i>
+                <span>
+                    <a class="inline-fancy" href="mailto:" title="Ή να μου στείλεις email">vardaki2552@gmail.com</a>
+                </span>
+            </div>
+            <div>
+                <i class="fa fa-instagram"></i>
+                <span>
+                    <a class="inline-fancy" title="Συμβουλές & ενημερώσεις καθημερινά"
+                        href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs">
+                        house_spa.holistic_beauty
+                    </a>
+                </span>
+            </div>
+            <div>
+                <i class="fa fa-calendar"></i>
+                <span>
+                    <a class="inline-fancy" href="appointment.html" title="Εύκολα & γρήγορα">Κλείσε το ραντεβού σου εδώ
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="contact-map">
             <div id="map"></div>
             <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
             <script>
                 // Initialize the map and set its view
-                var map = L.map('map').setView([37.839251, 23.827468], 14); // Coordinates of Holistic Spa Beauty
-        
+                var map = L.map('map').setView([37.839251, 23.827468], 13); // Coordinates of Holistic Spa Beauty
+
                 // Load and display tile layer from OpenStreetMap
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '© OpenStreetMap contributors'
                 }).addTo(map);
-        
+
                 // Draw a circle with a radius of 1km
                 var circle = L.circle([37.839251, 23.827468], {
-                    color: 'red',
-                    fillColor: '#f03',
+                    color: 'green',
+                    fillColor: 'green',
                     fillOpacity: 0.1,
                     radius: 1000 // 1km radius in meters
                 }).addTo(map);
-              </script>  
-          <!--  <form action="form_handler.php" method="post">
-              <input type="text" name="name" placeholder="Your name" required>
-              <input type="email" name="email" placeholder="Your email address" required>
-              <input type="text" name="subject" placeholder="Subject" required>
-              <textarea rows="8" name="message" placeholder="What's on your mind" required></textarea>
-              <button type="submit" class="hero-btn red-btn">Send Message</button>
-            </form> -->
-
-          </div>
+            </script>
         </div>
-      </div>
-    </section>
+    </div>
+        </div>
+    </div>
 
+    <footer>
+        <p>See what I'm up to</p>
+        <div class="footer-icons">
+            <a
+                href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+        <p>&copy; 2024 House Spa Holistic Beauty. All rights reserved. <br> Made with love by yours truly.</p>
+    </footer>
+</body>
 
-    <!-- footer -->
-    <section class="footer" style="background-color: #f7d9bc;">
-      <p>See what I'm up to</p>
-      <div class="icons">
-        <a href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs" style="text-decoration : none;">
-          <i style="color: #7a6140;" class="fa-brands fa-instagram"></i>
-        </a>
-      </div>
-      <p>&copy; 2024 House Spa. All rights reserved. Made with love by yours truly.</p>
-    </section>
-
-    <script>
-      var navLinks = document.getElementById(navLinks)
-      
-      function showMenu(){
-        navLinks.style.right = "0";
-      }
-      
-      function hideMenu(){
-        navLinks.style.right = "-200px";
-      }
-    </script>
-  </body>
 </html>
