@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KONCEPT - Web Design & Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #222;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #222;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #222;
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero-text {
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 60px;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #222;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #444;
+            transform: translateY(-2px);
+        }
+        
+        .blobs {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.6;
+            transition: all 1.5s ease;
+        }
+        
+        .blob1 {
+            background-color: #ffd166;
+            width: 300px;
+            height: 300px;
+            top: 20%;
+            right: 20%;
+        }
+        
+        .blob2 {
+            background-color: #06d6a0;
+            width: 350px;
+            height: 350px;
+            top: 40%;
+            right: 30%;
+        }
+        
+        .blob3 {
+            background-color: #118ab2;
+            width: 250px;
+            height: 250px;
+            top: 60%;
+            right: 10%;
+        }
+        
+        .projects {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-img {
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 16px;
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .project-info p {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-col {
+            flex-basis: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-col p, .footer-col a {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer-col a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            text-align: center;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .blobs {
+                width: 100%;
+                opacity: 0.3;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">KONCEPT.</div>
+            <nav>
+                <a href="#work">Work</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+        
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Creating websites that not only amaze, but also convert</h1>
+                <p>Creative individuals specializing in custom-made design, development and support for your brand.</p>
+                <a href="#contact" class="btn">Reach out</a>
+            </div>
+            
+            <div class="blobs">
+                <div class="blob blob1"></div>
+                <div class="blob blob2"></div>
+                <div class="blob blob3"></div>
+            </div>
+        </section>
+    </div>
+    
+    <section class="projects" id="work">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="project-grid">
+                <div class="project">
+                    <div class="project-img">
+                        <img src="images/CRC.png" alt="Selected Project 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+                
+                <div class="project">
+                    <div class="project-img"><img src="images/HSH.png" alt="Selected Project 2" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Contact us</h4>
+                    <span>Email: <a href="mailto:dimikaim37@gmail.com">dimikaim37@gmail.com</a></span>
+                    <span>Call: <a href="tel:6948202941">6948202941</a> </span>
+                    <span>Location: <p>Athens, GR</p></span>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Follow Me</h4>
+                    <a href="https://www.instagram.com/dre.anastasopoulos/">Instagram</a>
+                    <a href="https://github.com/AndreasAnastasopoulos">Github</a>
+                    <a href="https://www.linkedin.com/in/andreas-anastasopoulos-9904a0244/">LinkedIn</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 KONCEPT. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Animate blobs on mouse movement
+        document.addEventListener('mousemove', function(e) {
+            const blobs = document.querySelectorAll('.blob');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            blobs.forEach((blob, index) => {
+                const speed = 0.05 * (index + 1);
+                const offsetX = 50 * Math.sin(mouseX * Math.PI * speed);
+                const offsetY = 50 * Math.cos(mouseY * Math.PI * speed);
+                
+                blob.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
