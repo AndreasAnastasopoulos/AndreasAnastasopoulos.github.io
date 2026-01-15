@@ -1,0 +1,3646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-56T9JVD9WK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-56T9JVD9WK');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iTrast - Online Booking Systems & Websites</title>
+    <meta name="description"
+        content="Custom online booking systems & website solution services for barbershops, gyms, massage therapists, spas, doctors, and local businesses. Made with love by a young creative developer based in Athens, Greece.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon Links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="iTrast/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="iTrast/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="iTrast/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="iTrast/favicon_io/site.webmanifest">
+
+    <style>
+        /* ============================================
+           CSS RESET & VARIABLES
+        ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #23211F;
+            --bg-secondary: #2D2B28;
+            --bg-card: #333230;
+            --text-primary: #F7F7FF;
+            --text-secondary: #DCDCDC;
+            --text-muted: #A8A8A8;
+            --accent: #E28413;
+            --accent-light: #E89E3F;
+            --accent-glow: rgba(226, 132, 19, 0.15);
+            --border: rgba(240, 240, 240, 0.08);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.5);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-width: 320px;
+        }
+
+        /* ============================================
+           NAVIGATION
+        ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem;
+            background: rgba(35, 33, 31, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 132, 19, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .nav-logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #F7F7FF;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+        }
+
+        .nav-logo .i {
+            color: #E28413;
+        }
+
+        .nav-logo img {
+            height: clamp(0.875rem, 2.5vw, 2rem);
+            width: auto;
+            transition: height 0.3s ease;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #F7F7FF;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent) !important;
+            color: white !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            transition: all 0.3s ease !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-light) !important;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu a {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* ============================================
+           HERO SECTION
+        ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 1rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-glow);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(1.2);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.75rem, 5vw, 4rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
+        .hero-description {
+            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero h1 span,
+        .hero-description span {
+            color: var(--accent);
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 20px rgba(45, 90, 61, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(45, 90, 61, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-mockup {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            background: var(--bg-card);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .mockup-header {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mockup-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #E5E5E5;
+        }
+
+        .mockup-dot:first-child {
+            background: #FF6B6B;
+        }
+
+        .mockup-dot:nth-child(2) {
+            background: #FFE066;
+        }
+
+        .mockup-dot:nth-child(3) {
+            background: #69DB7C;
+        }
+
+        .mockup-content {
+            padding: 2rem;
+            background: white;
+        }
+
+        .booking-preview {
+            text-align: center;
+        }
+
+        .booking-preview h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .calendar-mini {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            border-radius: 8px;
+            background: var(--bg-secondary);
+            color: var(--text-muted);
+        }
+
+        .calendar-day.active {
+            background: var(--accent);
+            color: white;
+            font-weight: 600;
+        }
+
+        .calendar-day.available {
+            background: var(--accent-glow);
+            color: var(--accent);
+            cursor: pointer;
+        }
+
+        .time-slots {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .time-slot {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+        }
+
+        .time-slot.selected {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* ============================================
+           SERVICES SECTION
+        ============================================ */
+        .services {
+            padding: 6rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            width: 100%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card.expanded {
+            grid-column: 1 / -1;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-card.hidden-by-expansion {
+            opacity: 0;
+            pointer-events: none;
+            max-height: 0;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            transition: opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease, margin 0.5s ease;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #F7F7FF;
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Accordion Styles */
+        .service-card .service-description,
+        .service-card .service-features {
+            display: none;
+            max-height: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease, max-height 0.4s ease;
+        }
+
+        .service-card.active .service-description,
+        .service-card.active .service-features {
+            display: block;
+            max-height: 500px;
+            opacity: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card .service-visual {
+            display: none;
+            max-height: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease, max-height 0.4s ease;
+        }
+
+        .service-card.active .service-visual {
+            display: flex;
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 1.5rem;
+        }
+
+        .service-card.featured.active .service-description,
+        .service-card.featured.active .service-features {
+            max-height: none;
+        }
+
+        .service-card.featured.active .service-visual {
+            max-height: none;
+        }
+
+        .service-card .service-title {
+            transition: margin-bottom 0.3s ease;
+        }
+
+        .service-card.active {
+            padding: 2rem;
+        }
+
+        .service-card.featured {
+            grid-column: span 1;
+            display: block;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 2px solid var(--accent);
+        }
+
+        .service-card.featured.expanded {
+            grid-column: 1 / -1;
+            display: block;
+            padding: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-card.featured .service-icon {
+            background: var(--accent-glow);
+            color: var(--accent);
+        }
+
+        .service-card.featured .service-title,
+        .service-card.featured .service-description {
+            color: var(--text-primary);
+        }
+
+        .service-card.featured .service-description {
+            opacity: 1;
+        }
+
+        .service-card.featured .service-price {
+            color: var(--text-muted);
+            opacity: 1;
+        }
+
+        .service-card.featured .service-price span {
+            color: var(--accent);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            background: var(--accent-glow);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-shrink: 0;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+   SERVICE CARD HEADINGS - HIGHLIGHTER STYLE
+============================================ */
+        .section-heading {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1.1rem, 3vw, 1.25rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            display: inline;
+            background: linear-gradient(180deg, transparent 60%, rgba(226, 132, 19, 0.4) 60%);
+            padding: 0 4px;
+        }
+
+        .section-heading.solution {
+            background: linear-gradient(180deg, transparent 60%, rgba(105, 219, 124, 0.4) 60%);
+        }
+
+        .heading-wrapper {
+            margin-bottom: 0.4rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .service-card.featured .service-features li {
+            color: var(--text-secondary);
+        }
+
+        .service-card.featured .service-features li::before {
+            color: var(--accent);
+        }
+
+        .service-price {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .service-price span {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .service-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Booking Demo Placeholder */
+        .booking-demo-placeholder {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .booking-demo-placeholder svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .booking-demo-placeholder p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ============================================
+           DEMO SECTION
+        ============================================ */
+        .demo-section {
+            background: var(--bg-primary);
+            padding: 4rem 0;
+        }
+
+        .demo-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: transparent;
+            border-radius: 16px;
+            padding: 1.5rem;
+            width: 100%;
+        }
+
+        /* ============================================
+   CHALKBOARD ANNOTATIONS
+============================================ */
+        .chalk-annotations-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 0.75rem;
+            padding: 0 0.25rem;
+            gap: 0.5rem;
+        }
+
+        .chalk-annotation {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1rem, 3.5vw, 1.15rem);
+            font-weight: 600;
+            color: var(--accent);
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            text-shadow:
+                2px 2px 4px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(226, 132, 19, 0.3);
+            letter-spacing: 0.3px;
+            line-height: 1.2;
+        }
+
+        .chalk-annotation.left {
+            transform: rotate(-2deg);
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .chalk-annotation.right {
+            transform: rotate(2deg);
+            align-items: flex-end;
+            text-align: right;
+        }
+
+        .chalk-annotation svg {
+            width: clamp(24px, 6vw, 35px);
+            height: clamp(18px, 5vw, 28px);
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 0 8px rgba(226, 132, 19, 0.4));
+            animation: chalkWobble 3s ease-in-out infinite;
+        }
+
+        .chalk-annotation.left svg {
+            animation-delay: 0s;
+        }
+
+        .chalk-annotation.right svg {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes chalkWobble {
+
+            0%,
+            100% {
+                transform: rotate(0deg) translateY(0);
+            }
+
+            25% {
+                transform: rotate(-2deg) translateY(2px);
+            }
+
+            75% {
+                transform: rotate(2deg) translateY(-1px);
+            }
+        }
+
+        /* Very small screens (320px - 374px) */
+        @media (max-width: 374px) {
+            .chalk-annotation {
+                font-size: 0.8rem;
+            }
+
+            .chalk-annotation svg {
+                width: 22px;
+                height: 16px;
+            }
+
+            .chalk-annotations-wrapper {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        /* Larger screens (480px+) */
+        @media (min-width: 480px) {
+            .chalk-annotations-wrapper {
+                margin-bottom: 1rem;
+                padding: 0 0.5rem;
+            }
+
+            .chalk-annotation {
+                font-size: 1rem;
+            }
+
+            .chalk-annotation.left {
+                transform: rotate(-3deg);
+            }
+
+            .chalk-annotation.right {
+                transform: rotate(3deg);
+            }
+        }
+
+        /* Tablet and up (768px+) */
+        @media (min-width: 768px) {
+            .chalk-annotations-wrapper {
+                margin-bottom: 1.25rem;
+            }
+
+            .chalk-annotation {
+                font-size: 1.15rem;
+            }
+
+            .chalk-annotation.left {
+                transform: rotate(-4deg);
+            }
+
+            .chalk-annotation.right {
+                transform: rotate(3deg);
+            }
+        }
+
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+            background: #FFFECB;
+            padding: 0.35rem;
+            border-radius: 100px;
+            max-width: 100%;
+        }
+
+        .view-btn {
+            flex: 1;
+            padding: 0.75rem 0.5rem;
+            border: none;
+            background: transparent;
+            color: var(--bg-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .view-btn.active {
+            background: #45A3D2;
+            color: white;
+            box-shadow: 0 4px 12px rgba(69, 163, 210, 0.2);
+        }
+
+        .demo-frame {
+            background: #FFFECB;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.3);
+        }
+
+        .demo-bar {
+            background: #FFFECB;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid #e0d0c1;
+        }
+
+        .demo-dots {
+            display: flex;
+            gap: 0.4rem;
+            flex-shrink: 0;
+        }
+
+        .demo-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .demo-dot.r {
+            background: #FF6B6B;
+        }
+
+        .demo-dot.y {
+            background: #FFE066;
+        }
+
+        .demo-dot.g {
+            background: #69DB7C;
+        }
+
+        .demo-url {
+            flex: 1;
+            background: ivory;
+            padding: 0.4rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: #000000;
+            border: 1px solid #e0d0c1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            min-width: 0;
+        }
+
+        .demo-content {
+            min-height: 450px;
+        }
+
+        /* Customer Booking View */
+        .customer-view {
+            background: #FFFECB;
+            padding: 1.5rem 1rem;
+            min-height: 450px;
+        }
+
+        .customer-view.hidden {
+            display: none;
+        }
+
+        .book-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .book-header {
+            text-align: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .book-header h2 {
+            font-family: 'Playfair Display', serif;
+            color: #000000;
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            margin-bottom: 0.25rem;
+        }
+
+        .book-header p {
+            color: #000000;
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        .progress {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.8rem;
+            background: ivory;
+            color: #000000;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .step-num.active {
+            background: #45A3D2;
+            color: white;
+        }
+
+        .step-num.done {
+            background: #45A3D2;
+            color: white;
+        }
+
+        .step-line {
+            width: 24px;
+            height: 2px;
+            background: #e0d0c1;
+            flex-shrink: 0;
+        }
+
+        .step-line.active {
+            background: #45A3D2;
+        }
+
+        .book-card {
+            background: #FFFECB;
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 20px rgba(80, 59, 49, 0.1);
+            max-width: 600px;
+            margin: 0 2rem;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            color: #000000;
+            font-size: 1rem;
+            margin-bottom: 0.875rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #000000;
+        }
+
+        .svc-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .cat-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #000000;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.6rem;
+            margin-bottom: 0.3rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #000000;
+        }
+
+        .cat-label:first-child {
+            margin-top: 0;
+        }
+
+        .svc-item {
+            padding: 0.5rem 0.6rem;
+            border: 2px solid #45A3D2;
+            border-radius: 8px;
+            text-align: left;
+            font-weight: 500;
+            color: #000000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #FFFECB;
+        }
+
+        .svc-item.selected {
+            border: 2px solid #45A3D2;
+        }
+
+        .svc-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            display: block;
+        }
+
+        .svc-meta {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.7rem;
+            flex-wrap: wrap;
+        }
+
+        .svc-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
+
+        .svc-meta svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .svc-name {
+            font-weight: 600;
+            color: #000000;
+            font-size: 0.85rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .svc-meta {
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.75rem;
+            color: #000000;
+            opacity: 0.7;
+        }
+
+        /* Calendar */
+        .cal-wrap {
+            display: none;
+        }
+
+        .cal-wrap.active {
+            display: block;
+        }
+
+        .cal-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.875rem;
+        }
+
+        .cal-nav {
+            background: #45A3D2;
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .cal-nav:hover {
+            background: #3a8bc4;
+        }
+
+        .cal-month {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .wd {
+            text-align: center;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #000000;
+            opacity: 0.6;
+            padding: 0.3rem;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.2rem;
+        }
+
+        .day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--bg-primary);
+            border-radius: 6px;
+            font-weight: 500;
+            color: #000000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #FFFECB;
+            font-size: 0.75rem;
+            position: relative;
+        }
+
+        .day:hover:not(.off):not(.empty) {
+            border-style: solid;
+        }
+
+        .day.sel {
+            border: 2px solid #45A3D2;
+        }
+
+        .day.off {
+            opacity: 0.3;
+            cursor: not-allowed;
+            background: #f5f5f5;
+        }
+
+        .day.empty {
+            border: none;
+            cursor: default;
+        }
+
+        .day.has::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            width: 4px;
+            height: 4px;
+            background: #45A3D2;
+            border-radius: 50%;
+        }
+
+        .day.sel.has::after {
+            background: white;
+        }
+
+        /* Time Slots */
+        .times-wrap {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #e0d0c1;
+        }
+
+        .times-wrap.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .times-title {
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        .times-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.3rem;
+        }
+
+        .time-btn {
+            padding: 0.5rem 0.4rem;
+            border: 2px solid var(--bg-primary);
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+            color: #000000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #FFFECB;
+            font-size: 0.75rem;
+        }
+
+        .time-btn.sel {
+            border: 2px solid #45A3D2;
+        }
+
+        .time-btn.booked {
+            opacity: 0.4;
+            cursor: not-allowed;
+            background: #e8e8e8;
+            text-decoration: line-through;
+        }
+
+        /* Form */
+        .form-wrap {
+            display: none;
+        }
+
+        .form-wrap.active {
+            display: block;
+        }
+
+        .summary {
+            background: #f9f6f3;
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 0.875rem;
+            border-left: 4px solid #45A3D2;
+        }
+
+        .sum-label {
+            font-size: 0.7rem;
+            color: #000000;
+            opacity: 0.7;
+            margin-bottom: 0.15rem;
+        }
+
+        .sum-val {
+            font-weight: 600;
+            color: #000000;
+            font-size: 0.85rem;
+            word-break: break-word;
+        }
+
+        .form-group {
+            margin-bottom: 0.75rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 0.3rem;
+            font-size: 0.8rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.65rem;
+            border: 2px solid #e0d0c1;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            color: #000000;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #45A3D2;
+        }
+
+        .error-msg {
+            display: block;
+            color: #dc3545;
+            font-size: 0.7rem;
+            margin-top: 0.2rem;
+        }
+
+        .form-group input.error {
+            border-color: #dc3545;
+            background-color: #fff5f5;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: #45A3D2;
+            color: ivory;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            margin-top: 0.5rem;
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 2px solid #000000;
+            color: #000000;
+            padding: 0.35rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            flex-shrink: 0;
+        }
+
+        /* Success */
+        .success {
+            display: none;
+            text-align: center;
+            padding: 1.5rem 0.5rem;
+        }
+
+        .success.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-icon {
+            width: 56px;
+            height: 56px;
+            background: #28a745;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.875rem;
+        }
+
+        .success-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: white;
+        }
+
+        .success h3 {
+            font-family: 'Playfair Display', serif;
+            color: #000000;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .success p {
+            color: #000000;
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        /* Admin View */
+        .admin-view {
+            background: #FFFECB;
+            padding: 1rem;
+            min-height: 450px;
+            display: none;
+        }
+
+        .admin-view.active {
+            display: block;
+        }
+
+        .admin-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.65rem;
+            border-bottom: 2px solid #e0d0c1;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .admin-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: #000000;
+        }
+
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .admin-avatar {
+            width: 32px;
+            height: 32px;
+            background: #45A3D2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .admin-name {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #000000;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat {
+            background: #FFFECB;
+            padding: 0.75rem 0.5rem;
+            border-radius: 10px;
+            border: 1px solid #e0d0c1;
+            box-shadow: 0 2px 8px rgba(80, 59, 49, 0.05);
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.6rem;
+            color: #000000;
+            opacity: 0.7;
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-val {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 700;
+            color: #000000;
+        }
+
+        .stat-val.blue {
+            color: #007bff;
+        }
+
+        .stat-val.orange {
+            color: #fd7e14;
+        }
+
+        .stat-val.green {
+            color: #28a745;
+        }
+
+        .panel {
+            background: #FFFECB;
+            border-radius: 10px;
+            border: 1px solid #e0d0c1;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(80, 59, 49, 0.05);
+        }
+
+        .panel-head {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e0d0c1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            background: #FFFECB;
+        }
+
+        .panel-title {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #000000;
+        }
+
+        .filters {
+            display: flex;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+        }
+
+        .filter {
+            padding: 0.35rem 0.6rem;
+            border: 1px solid #e0d0c1;
+            background: ivory;
+            color: #000000;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .filter:hover {
+            background: #f0e8df;
+            border-color: #45A3D2;
+        }
+
+        .filter.active {
+            background: #45A3D2;
+            color: white;
+            border-color: #45A3D2;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+
+        th {
+            text-align: left;
+            padding: 0.6rem 0.5rem;
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: #000000;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e0d0c1;
+            background: #f9f6f3;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 0.6rem 0.5rem;
+            border-bottom: 1px solid #e0d0c1;
+            font-size: 0.75rem;
+            color: #000000;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .client-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .client-name {
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: #000000;
+        }
+
+        .client-email {
+            font-size: 0.65rem;
+            color: #000000;
+            opacity: 0.7;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 100px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .status.confirmed {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+        }
+
+        .status.pending {
+            background: rgba(253, 126, 20, 0.1);
+            color: #fd7e14;
+        }
+
+        .status.completed {
+            background: rgba(0, 123, 255, 0.1);
+            color: #007bff;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+        }
+
+        .act {
+            padding: 0.25rem 0.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+
+        .act.confirm {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+        }
+
+        .act.confirm:hover {
+            background: #28a745;
+            color: white;
+        }
+
+        .act.complete {
+            background: rgba(69, 163, 210, 0.1);
+            color: #45A3D2;
+        }
+
+        .act.complete:hover {
+            background: #45A3D2;
+            color: white;
+        }
+
+        .act.cancel {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+        }
+
+        .act.cancel:hover {
+            background: #dc3545;
+            color: white;
+        }
+
+        /* ============================================
+           CONTACT / ABOUT SECTION
+        ============================================ */
+        .contact {
+            padding: 4rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: start;
+            width: 100%;
+        }
+
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .contact-method:hover {
+            transform: translateX(8px);
+            border-color: var(--accent);
+        }
+
+        .contact-method svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .contact-method span {
+            font-weight: 500;
+            font-size: 0.85rem;
+            word-break: break-all;
+        }
+
+        .contact-image {
+            position: relative;
+            width: 100%;
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            width: 100%;
+        }
+
+        .about-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--accent-glow);
+            margin: 0 auto 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--accent);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .about-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .about-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-title {
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .about-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .about-location svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .social-links svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        footer {
+            padding: 1.5rem 1rem;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* ============================================
+           ANIMATIONS
+        ============================================ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+   TOUCH DEVICE - DISABLE ALL EFFECTS
+============================================ */
+        @media (hover: none) and (pointer: coarse) {
+
+            /* Remove all transitions except for accordion and mobile menu */
+            .nav,
+            .nav-links a,
+            .nav-cta,
+            .btn,
+            .btn-primary,
+            .btn-secondary,
+            .view-btn,
+            .svc-item,
+            .cal-nav,
+            .day,
+            .time-btn,
+            .submit-btn,
+            .back-btn,
+            .filter,
+            .act,
+            .contact-method,
+            .social-links a,
+            .form-group input {
+                transition: none !important;
+            }
+
+            /* Navigation - remove hover effects */
+            .nav-links a:hover,
+            .nav-links a:focus,
+            .nav-links a:active {
+                color: #F7F7FF;
+            }
+
+            .nav-cta:hover,
+            .nav-cta:focus,
+            .nav-cta:active {
+                background: var(--accent) !important;
+                transform: none !important;
+            }
+
+            /* Buttons - remove all effects */
+            .btn-primary:hover,
+            .btn-primary:focus,
+            .btn-primary:active {
+                background: var(--accent);
+                transform: none;
+                box-shadow: 0 4px 20px rgba(45, 90, 61, 0.3);
+            }
+
+            .btn-secondary:hover,
+            .btn-secondary:focus,
+            .btn-secondary:active {
+                border-color: var(--border);
+                color: var(--text-primary);
+                transform: none;
+            }
+
+            /* Service cards - keep accordion but remove hover lift */
+            .service-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .service-card:hover::before {
+                transform: scaleX(0);
+            }
+
+            /* Demo section elements */
+            .view-btn:hover,
+            .view-btn:focus,
+            .view-btn:active {
+                background: transparent;
+                color: var(--text-secondary);
+            }
+
+            .view-btn.active:hover,
+            .view-btn.active:focus,
+            .view-btn.active:active {
+                background: #45A3D2;
+                color: white;
+            }
+
+            .svc-item:hover,
+            .svc-item:focus,
+            .svc-item:active {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .svc-item.selected:hover,
+            .svc-item.selected:focus,
+            .svc-item.selected:active {
+                border-color: #45A3D2;
+            }
+
+            .cal-nav:hover,
+            .cal-nav:focus,
+            .cal-nav:active {
+                background: #45A3D2;
+            }
+
+            .day:hover,
+            .day:focus,
+            .day:active {
+                transform: none;
+                box-shadow: none;
+                border-style: solid;
+            }
+
+            .day.sel:hover,
+            .day.sel:focus,
+            .day.sel:active {
+                border-color: #45A3D2;
+            }
+
+            .time-btn:hover,
+            .time-btn:focus,
+            .time-btn:active {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .time-btn.sel:hover,
+            .time-btn.sel:focus,
+            .time-btn.sel:active {
+                border-color: #45A3D2;
+            }
+
+            .submit-btn:hover,
+            .submit-btn:focus,
+            .submit-btn:active {
+                background: #45A3D2;
+            }
+
+            .back-btn:hover,
+            .back-btn:focus,
+            .back-btn:active {
+                background: transparent;
+                border-color: #000000;
+                color: #000000;
+            }
+
+            /* Admin filters and actions */
+            .filter:hover,
+            .filter:focus,
+            .filter:active {
+                background: ivory;
+                border-color: #e0d0c1;
+            }
+
+            .filter.active:hover,
+            .filter.active:focus,
+            .filter.active:active {
+                background: #45A3D2;
+                color: white;
+                border-color: #45A3D2;
+            }
+
+            .act.confirm:hover,
+            .act.confirm:focus,
+            .act.confirm:active {
+                background: rgba(40, 167, 69, 0.1);
+                color: #28a745;
+            }
+
+            .act.complete:hover,
+            .act.complete:focus,
+            .act.complete:active {
+                background: rgba(69, 163, 210, 0.1);
+                color: #45A3D2;
+            }
+
+            .act.cancel:hover,
+            .act.cancel:focus,
+            .act.cancel:active {
+                background: rgba(220, 53, 69, 0.1);
+                color: #dc3545;
+            }
+
+            /* Contact section */
+            .contact-method:hover,
+            .contact-method:focus,
+            .contact-method:active {
+                transform: none;
+                border-color: var(--border);
+            }
+
+            .social-links a:hover,
+            .social-links a:focus,
+            .social-links a:active {
+                background: var(--bg-secondary);
+                color: var(--text-secondary);
+                transform: none;
+            }
+
+            /* Form inputs */
+            .form-group input:focus {
+                border-color: #45A3D2;
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+        ============================================ */
+
+        /* Tablets and up (768px+) */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .hero {
+                padding: 8rem 2rem 4rem;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+
+            .hero-ctas {
+                flex-direction: row;
+            }
+
+            .btn {
+                width: auto;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .section-inner {
+                padding: 0 2rem;
+            }
+
+            .demo-container {
+                padding: 2rem;
+            }
+
+            .times-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .contact {
+                padding: 6rem 0;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: center;
+            }
+
+            .about-card {
+                padding: 2.5rem;
+            }
+
+            .about-avatar {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* Mobile only (less than 768px) */
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-description {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .services {
+                padding: 4rem 0;
+            }
+
+            .service-card {
+                padding: 1.25rem;
+            }
+
+            .service-card.active,
+            .service-card.expanded {
+                padding: 1.5rem;
+            }
+
+            .book-card {
+                margin: 0 auto;
+            }
+        }
+
+        /* Small phones (320px - 374px) */
+        @media (max-width: 374px) {
+            .nav {
+                padding: 0.65rem 0.5rem;
+            }
+
+            .nav-inner {
+                padding: 0 0.25rem;
+            }
+
+            .nav-logo {
+                font-size: 1.15rem;
+            }
+
+            .hero {
+                padding: 5rem 0.75rem 2.5rem;
+            }
+
+            .hero-badge {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.7rem;
+            }
+
+            .btn {
+                padding: 0.85rem 1.25rem;
+                font-size: 0.9rem;
+            }
+
+            .section-header {
+                margin-bottom: 2rem;
+            }
+
+            .services,
+            .contact {
+                padding: 3rem 0;
+            }
+
+            .section-inner {
+                padding: 0 0.75rem;
+            }
+
+            .service-card {
+                padding: 1rem;
+                border-radius: 16px;
+            }
+
+            .service-icon {
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+            }
+
+            .service-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .demo-container {
+                padding: 1rem;
+                border-radius: 12px;
+            }
+
+            .view-btn {
+                padding: 0.6rem 0.4rem;
+                font-size: 0.75rem;
+            }
+
+            .demo-bar {
+                padding: 0.5rem 0.65rem;
+            }
+
+            .demo-dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .demo-url {
+                font-size: 0.65rem;
+                padding: 0.35rem 0.5rem;
+            }
+
+            .customer-view {
+                padding: 1rem 0.75rem;
+            }
+
+            .book-card {
+                padding: 1rem;
+                border-radius: 10px;
+            }
+
+            .step-num {
+                width: 24px;
+                height: 24px;
+                font-size: 0.7rem;
+            }
+
+            .step-line {
+                width: 18px;
+            }
+
+            .svc-item {
+                padding: 0.5rem;
+            }
+
+            .svc-name {
+                font-size: 0.8rem;
+            }
+
+            .svc-meta {
+                font-size: 0.7rem;
+                gap: 0.5rem;
+            }
+
+            .cal-nav {
+                width: 28px;
+                height: 28px;
+                font-size: 0.9rem;
+            }
+
+            .day {
+                font-size: 0.65rem;
+                border-radius: 4px;
+            }
+
+            .times-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .time-btn {
+                padding: 0.45rem 0.3rem;
+                font-size: 0.7rem;
+            }
+
+            .form-group input {
+                padding: 0.55rem;
+                font-size: 0.8rem;
+            }
+
+            .submit-btn {
+                padding: 0.65rem;
+                font-size: 0.85rem;
+            }
+
+            .back-btn {
+                padding: 0.3rem 0.5rem;
+                font-size: 0.7rem;
+            }
+
+            .admin-view {
+                padding: 0.75rem;
+            }
+
+            .stats {
+                gap: 0.35rem;
+            }
+
+            .stat {
+                padding: 0.5rem 0.25rem;
+                border-radius: 8px;
+            }
+
+            .stat-label {
+                font-size: 0.55rem;
+            }
+
+            .panel-head {
+                padding: 0.6rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filters {
+                width: 100%;
+            }
+
+            .filter {
+                flex: 1;
+                text-align: center;
+                padding: 0.3rem 0.4rem;
+                font-size: 0.65rem;
+            }
+
+            table {
+                min-width: 450px;
+            }
+
+            th,
+            td {
+                padding: 0.5rem 0.35rem;
+                font-size: 0.65rem;
+            }
+
+            .client-name {
+                font-size: 0.7rem;
+            }
+
+            .client-email {
+                font-size: 0.6rem;
+            }
+
+            .act {
+                padding: 0.2rem 0.4rem;
+                font-size: 0.55rem;
+            }
+
+            .contact-method {
+                padding: 0.75rem;
+            }
+
+            .contact-method svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .contact-method span {
+                font-size: 0.75rem;
+            }
+
+            .about-card {
+                padding: 1.25rem 1rem;
+                border-radius: 16px;
+            }
+
+            .about-avatar {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 1rem;
+            }
+
+            .about-title {
+                font-size: 0.8rem;
+            }
+
+            .about-location {
+                font-size: 0.8rem;
+            }
+
+            .about-location svg {
+                width: 14px;
+                height: 14px;
+            }
+
+            .social-links {
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+
+            .social-links a {
+                width: 36px;
+                height: 36px;
+            }
+
+            .social-links svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .mobile-menu a {
+                font-size: 1.25rem;
+            }
+
+            footer {
+                padding: 1.25rem 0.75rem;
+            }
+
+            footer p {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Medium phones (375px - 479px) */
+        @media (min-width: 375px) and (max-width: 479px) {
+            .times-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Larger phones (480px+) */
+        @media (min-width: 480px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .times-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo"><img src="iTrast/iTrast.png" alt="iTrast Logo"></a>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#demo">Try it Out</a>
+                <a href="#contact" class="nav-cta">Contact</a>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="toggleMenu()">×</button>
+        <a href="#services" onclick="toggleMenu()">Services</a>
+        <a href="#demo" onclick="toggleMenu()">Try it Out</a>
+        <a href="#contact" onclick="toggleMenu()">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <h1>Online <span>Booking Systems</span> & Websites for Local Businesses</h1>
+                <p class="hero-description">Need a booking system? <span>We got you covered.</span><br>
+                    Need a website? <span>We got that too.</span><br>Already have a system? <span>Let's improve
+                        it.</span></p>
+                <div class="hero-ctas">
+                    <a href="#demo" class="btn btn-primary">
+                        Try a little demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">Services</span>
+                <p class="section-subtitle">Click on the services for more information</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Featured: Booking System -->
+                <div class="service-card featured" onclick="toggleService(this)">
+                    <div class="service-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Online Booking System</h3>
+                    <div class="service-description">
+                        <p style="line-height: 1.7;">
+                            <span class="heading-wrapper"><span class="section-heading">Is this you?</span></span><br>
+                            Customers text you to book, you manually check your notes, coordinate times, they cancel
+                            last minute, and you scramble to reach other clients about sudden availability.<br>
+                            <br>
+                            <span class="heading-wrapper"><span class="section-heading solution">Put your booking
+                                    process online.</span></span><br>
+                            Let customers book 24/7, automatically get reminded,
+                            and you manage everything from one dashboard.<br> <span style="font-weight: 600;">You'll
+                                love
+                                it. Your customers will too.</span>
+                        </p>
+                    </div>
+                    <ul class="service-features">
+                        <li>24/7 online appointment scheduling</li>
+                        <li>Automated confirmation e-mails</li>
+                        <li>Easy calendar management for you</li>
+                        <li>Lightning fast booking for your customers</li>
+                        <li>Custom-tailored to your needs</li>
+                        <li>Sign-up / No sign-up bookings</li>
+                        <li>Payment options / Pay later in cash</li>
+                        <li>Different profiles for your staff</li>
+                    </ul>
+                    <p class="service-price">Only <span>€5/month</span> • €60/year</p>
+                </div>
+
+                <!-- Business Website -->
+                <div class="service-card" onclick="toggleService(this)">
+                    <div class="service-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path
+                                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Business Website</h3>
+                    <div class="service-description">
+                        <p style="line-height: 1.7;">
+                            <span class="heading-wrapper"><span class="section-heading">Is this you?</span></span><br>
+                            Potential customers search for your services online, but they can't find you. Or even worse,
+                            they find your competitors instead.<br>
+                            <br>
+                            <span class="heading-wrapper"><span class="section-heading solution">Get found
+                                    online.</span></span><br>
+                            A professional website that showcases your services, builds trust, and makes it easy for new
+                            clients to contact you.
+                        </p>
+                    </div>
+                    <ul class="service-features">
+                        <li>Clean, modern design</li>
+                        <li>Works perfectly on all devices</li>
+                        <li>Shows up on Google</li>
+                        <li>Convey your unique value and services to potential clients</li>
+                        <li>We help you film content to showcase your services</li>
+                        <li>Bookings, purchases, and customer management integrated if needed</li>
+                        <li>We handle your online domain & hosting, you can focus on your business</li>
+                    </ul>
+                    <p class="service-price">Starting from <span>€200</span> + €20/month for support</p>
+                </div>
+
+                <!-- Portfolio Website -->
+                <div class="service-card" onclick="toggleService(this)">
+                    <div class="service-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Portfolio Website</h3>
+                    <div class="service-description">
+                        <p style="line-height: 1.7;">
+                            <span class="heading-wrapper"><span class="section-heading">Is this you?</span></span><br>
+                            You do great work, but showing it off means scrolling through your phone or digging through
+                            folders. Not exactly professional.<br>
+                            <br>
+                            <span class="heading-wrapper"><span class="section-heading solution">Let your work speak for
+                                    itself.</span></span><br>
+                            A beautiful portfolio that showcases your best projects and establishes you as the
+                            professional you are.
+                        </p>
+                    </div>
+                    <ul class="service-features">
+                        <li>Showcase your best work</li>
+                        <li>Put your personal brand on the page</li>
+                        <li>We help you film content to showcase your projects</li>
+                        <li>We handle your online domain & hosting, you can focus on your craft</li>
+                    </ul>
+                    <p class="service-price">Starting from <span>€200</span> • Free support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="section demo-section" id="demo">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">Try it out!</h2>
+                <p class="section-sub">See how easy it is for your clients to book, and how you can manage everything
+                    from one dashboard.</p>
+            </div>
+            <div class="demo-container">
+                <!-- Chalk annotations -->
+                <div class="chalk-annotations-wrapper">
+                    <div class="chalk-annotation left">
+                        <span>Your customers see this!</span>
+                        <svg viewBox="0 0 35 28">
+                            <path d="M8 4 C6 10, 7 16, 12 22 M6 18 L12 22 L16 17" />
+                        </svg>
+                    </div>
+                    <div class="chalk-annotation right">
+                        <span>This is what YOU see!</span>
+                        <svg viewBox="0 0 35 28">
+                            <path d="M27 4 C29 10, 28 16, 23 22 M19 17 L23 22 L29 18" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="view-toggle">
+                    <button class="view-btn active" onclick="showView('customer',event)">Customer View</button>
+                    <button class="view-btn" onclick="showView('admin',event)">Admin Dashboard</button>
+                </div>
+                <div class="demo-frame">
+                    <div class="demo-bar">
+                        <div class="demo-dots"><span class="demo-dot r"></span><span class="demo-dot y"></span><span
+                                class="demo-dot g"></span></div>
+                        <div class="demo-url" id="browserUrl">yourbusiness.com/booking</div>
+                    </div>
+                    <div class="demo-content">
+                        <div class="customer-view" id="customerView">
+                            <div class="book-container">
+                                <div class="book-header">
+                                    <h2>Book an Appointment</h2>
+                                    <p id="stepDesc">Choose your service</p>
+                                </div>
+                                <div class="progress">
+                                    <div class="step-num active" id="s1">1</div>
+                                    <div class="step-line" id="l1"></div>
+                                    <div class="step-num" id="s2">2</div>
+                                    <div class="step-line" id="l2"></div>
+                                    <div class="step-num" id="s3">3</div>
+                                </div>
+                                <div class="book-card">
+                                    <div id="step1">
+                                        <h3 class="card-title">Select a Service</h3>
+                                        <div class="svc-grid" id="svcGrid"></div>
+                                    </div>
+                                    <div class="cal-wrap" id="step2">
+                                        <div
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;gap:0.5rem">
+                                            <h3 class="card-title" style="margin-bottom:0;border:none;padding-bottom:0">
+                                                Select Date & Time</h3>
+                                            <button class="back-btn" onclick="goStep(1)">Back</button>
+                                        </div>
+                                        <div class="cal-head">
+                                            <button class="cal-nav" onclick="chgMonth(-1)">‹</button>
+                                            <div class="cal-month" id="curMonth"></div>
+                                            <button class="cal-nav" onclick="chgMonth(1)">›</button>
+                                        </div>
+                                        <div class="weekdays">
+                                            <div class="wd">Mon</div>
+                                            <div class="wd">Tue</div>
+                                            <div class="wd">Wed</div>
+                                            <div class="wd">Thu</div>
+                                            <div class="wd">Fri</div>
+                                            <div class="wd">Sat</div>
+                                            <div class="wd">Sun</div>
+                                        </div>
+                                        <div class="days-grid" id="calDays"></div>
+                                        <div class="times-wrap" id="timesWrap">
+                                            <div
+                                                style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;gap:0.5rem;flex-wrap:wrap">
+                                                <div class="times-title" id="dateDisp">Available times:</div>
+                                                <button class="back-btn" onclick="backToCalendar()">Back</button>
+                                            </div>
+                                            <div class="times-grid" id="timesGrid"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-wrap" id="step3">
+                                        <div
+                                            style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;gap:0.5rem">
+                                            <h3 class="card-title" style="margin-bottom:0;border:none;padding-bottom:0">
+                                                Your Details</h3>
+                                            <button class="back-btn" onclick="goStep(2)">Back</button>
+                                        </div>
+                                        <div class="summary">
+                                            <div class="sum-label">Your booking:</div>
+                                            <div class="sum-val" id="bookSum">-</div>
+                                        </div>
+                                        <div class="form-group"><label>Full Name</label><input type="text" id="cName"
+                                                placeholder="John Smith"><span class="error-msg" id="nameError"></span>
+                                        </div>
+                                        <div class="form-group"><label>Email</label><input type="email" id="cEmail"
+                                                placeholder="john@email.com"><span class="error-msg"
+                                                id="emailError"></span></div>
+                                        <div class="form-group"><label>Phone</label><input type="tel" id="cPhone"
+                                                placeholder="+30 694 000 0000"><span class="error-msg"
+                                                id="phoneError"></span></div>
+                                        <button class="submit-btn" onclick="submitBook()">Confirm Booking</button>
+                                    </div>
+                                    <div class="success" id="successState">
+                                        <div class="success-icon"><svg fill="none" stroke="currentColor"
+                                                stroke-width="3" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M5 13l4 4L19 7" />
+                                            </svg></div>
+                                        <h3>Booking Confirmed</h3>
+                                        <p>You will receive a confirmation email shortly.</p>
+                                        <button class="submit-btn"
+                                            style="margin:1rem auto 0;background:transparent;color:#45A3D2;border:2px solid #45A3D2"
+                                            onclick="resetBook()">Book Another</button>
+                                        <button class="submit-btn" style="margin:0.5rem auto 0;background:#45A3D2"
+                                            onclick="viewAdminDashboard()">Verify it on Admin Dashboard</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="admin-view" id="adminView">
+                            <div class="admin-head">
+                                <h2 class="admin-title">Dashboard</h2>
+                                <div class="admin-user">
+                                    <div class="admin-avatar">A</div><span class="admin-name">Welcome, Admin!</span>
+                                </div>
+                            </div>
+                            <div class="stats">
+                                <div class="stat">
+                                    <div class="stat-label">Today</div>
+                                    <div class="stat-val" id="todayCnt">3</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-label">This Week</div>
+                                    <div class="stat-val" id="weekCnt">12</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-label">Revenue</div>
+                                    <div class="stat-val green" id="revenueCnt">€0</div>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-head">
+                                    <div class="panel-title">Upcoming Appointments</div>
+                                    <div class="filters">
+                                        <button class="filter active" onclick="filterBook('all',event)">All</button>
+                                        <button class="filter"
+                                            onclick="filterBook('confirmed',event)">Confirmed</button>
+                                        <button class="filter"
+                                            onclick="filterBook('cancelled',event)">Cancelled</button>
+                                    </div>
+                                </div>
+                                <div class="table-wrap">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th style="background: #FFFECB;">Client</th>
+                                                <th style="background: #FFFECB;">Service</th>
+                                                <th style="background: #FFFECB;">Date & Time</th>
+                                                <th style="background: #FFFECB;">Status</th>
+                                                <th style="background: #FFFECB;">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="bookBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-inner">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-label">Let's Talk</span>
+                    <h2>Get in Touch</h2>
+                    <p>Have a project in mind? I'd love to hear about it. Knowing your brand and your vision will help
+                        me create a tailored solution to your needs. Whether you need a booking system, a website, or my
+                        thoughts on your current tools, reach out and let's chat.</p>
+
+                    <div class="contact-methods">
+                        <a href="mailto:anastasopoulos.andreas01@gmail.com" class="contact-method">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span>anastasopoulos.andreas01@gmail.com</span>
+                        </a>
+                        <a href="tel:+306948202941" class="contact-method">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <span>+30 694 820 2941</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-image">
+                    <div class="about-card">
+                        <div class="about-avatar"><img src="iTrast/PHOTO CV.jpg" alt="Andreas Anastasopoulos"></div>
+                        <h3 class="about-name">Andreas Anastasopoulos</h3>
+                        <p class="about-title">Freelance Web Developer.<br>InfoSec Analyst Intern, Trescal.</p>
+                        <p class="about-location">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Athens, Greece
+                        </p>
+                        <div class="social-links">
+                            <a href="https://github.com/AndreasAnastasopoulos" target="_blank" aria-label="GitHub">
+                                <svg fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/anastasopoulos-andreas/" target="_blank"
+                                aria-label="LinkedIn">
+                                <svg fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                            </a>
+                            <a href="https://wa.me/306948202941" target="_blank" aria-label="WhatsApp">
+                                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 448 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                                    <path
+                                        d="M380.9 97.1c-41.9-42-97.7-65.1-157-65.1-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480 117.7 449.1c32.4 17.7 68.9 27 106.1 27l.1 0c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1s56.2 81.2 56.1 130.5c0 101.8-84.9 184.6-186.6 184.6zM325.1 300.5c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8s-14.3 18-17.6 21.8c-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7s-12.5-30.1-17.1-41.2c-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2s-9.7 1.4-14.8 6.9c-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.6 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4s4.6-24.1 3.2-26.4c-1.3-2.5-5-3.9-10.5-6.6z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Andreas Anastasopoulos. Built with care in Athens, Greece.</p>
+    </footer>
+
+    <script>
+        // ============================================
+        // DATA & STATE
+        // ============================================
+        const services = [
+            { id: 'haircut', name: 'Classic Haircut', duration: 30, price: 15, category: 'Hair' },
+            { id: 'haircut_beard', name: 'Haircut + Beard Trim', duration: 45, price: 18, category: 'Hair' },
+            { id: 'personal_workout', name: 'Solo Workout', duration: 90, price: 10, category: 'Gym' },
+            { id: 'free_workout', name: 'Zumba Class', duration: 60, price: 15, category: 'Gym' },
+            { id: 'massage', name: 'Relaxing Massage', duration: 60, price: 45, category: 'Wellness' },
+        ];
+
+        const businessHours = {
+            0: null,
+            1: { start: '09:00', end: '18:00' },
+            2: { start: '09:00', end: '18:00' },
+            3: { start: '09:00', end: '18:00' },
+            4: { start: '09:00', end: '18:00' },
+            5: { start: '09:00', end: '18:00' },
+            6: null,
+        };
+
+        let currentMonth = new Date();
+        let selectedService = null;
+        let selectedDate = null;
+        let selectedTime = null;
+        let currentStep = 1;
+
+        let bookings = [
+            { id: 1, client: 'Maria K.', email: 'maria@email.com', phone: '+30 694 111 2222', service: 'Classic Haircut', date: getTodayFormatted(), time: '10:00', status: 'confirmed' },
+            { id: 2, client: 'George P.', email: 'george@email.com', phone: '+30 694 333 4444', service: 'Haircut + Beard Trim', date: getTodayFormatted(), time: '11:30', status: 'confirmed' },
+            { id: 3, client: 'Anna S.', email: 'anna@email.com', phone: '+30 694 555 6666', service: 'Relaxing Massage', date: getTodayFormatted(), time: '14:00', status: 'confirmed' },
+            { id: 4, client: 'Nikos M.', email: 'nikos@email.com', phone: '+30 694 777 8888', service: 'Solo Workout', date: getTomorrowFormatted(), time: '09:30', status: 'confirmed' },
+            { id: 5, client: 'Elena T.', email: 'elena@email.com', phone: '+30 694 999 0000', service: 'Zumba Class', date: getTomorrowFormatted(), time: '12:00', status: 'confirmed' },
+        ];
+
+        // ============================================
+        // HELPER FUNCTIONS
+        // ============================================
+        function getTodayFormatted() {
+            const today = new Date();
+            return formatDate(today);
+        }
+
+        function getTomorrowFormatted() {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            return formatDate(tomorrow);
+        }
+
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        function formatDateDisplay(dateStr) {
+            const date = new Date(dateStr);
+            const options = { weekday: 'short', month: 'short', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'];
+
+        // ============================================
+        // VIEW SWITCHING
+        // ============================================
+        function showView(view, event) {
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const customerView = document.getElementById('customerView');
+            const adminView = document.getElementById('adminView');
+
+            if (view === 'customer') {
+                customerView.style.display = 'block';
+                adminView.style.display = 'none';
+                populateServices();
+            } else {
+                customerView.style.display = 'none';
+                adminView.style.display = 'block';
+                renderBookingsTable();
+                updateStats();
+            }
+        }
+
+        // ============================================
+        // CUSTOMER BOOKING FLOW
+        // ============================================
+        function populateServices() {
+            const grid = document.getElementById('svcGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            let currentCategory = '';
+
+            services.forEach(service => {
+                if (service.category !== currentCategory) {
+                    currentCategory = service.category;
+                    const categoryLabel = document.createElement('div');
+                    categoryLabel.className = 'cat-label';
+                    categoryLabel.textContent = currentCategory;
+                    grid.appendChild(categoryLabel);
+                }
+
+                const item = document.createElement('div');
+                item.className = 'svc-item';
+                item.innerHTML = `
+                    <span class="svc-name">${service.name}</span>
+                    <div class="svc-meta">
+                        <span>
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 6 12 12 16 14"/></svg>
+                            ${service.duration}m
+                        </span>
+                        <span>€${service.price}</span>
+                    </div>
+                `;
+                item.onclick = () => selectService(service, item);
+                grid.appendChild(item);
+            });
+        }
+
+        function selectService(service, element) {
+            selectedService = service;
+
+            document.querySelectorAll('.svc-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            element.classList.add('selected');
+
+            setTimeout(() => goStep(2), 300);
+        }
+
+        function goStep(step) {
+            currentStep = step;
+
+            // Update progress
+            for (let i = 1; i <= 3; i++) {
+                const stepNum = document.getElementById(`s${i}`);
+                const line = document.getElementById(`l${i - 1}`);
+
+                if (i < step) {
+                    stepNum.classList.add('done');
+                    stepNum.classList.remove('active');
+                    stepNum.innerHTML = '✓';
+                } else if (i === step) {
+                    stepNum.classList.add('active');
+                    stepNum.classList.remove('done');
+                    stepNum.innerHTML = i;
+                } else {
+                    stepNum.classList.remove('active', 'done');
+                    stepNum.innerHTML = i;
+                }
+
+                if (line && i < step) {
+                    line.classList.add('active');
+                } else if (line) {
+                    line.classList.remove('active');
+                }
+            }
+
+            // Show/hide steps
+            document.getElementById('step1').style.display = step === 1 ? 'block' : 'none';
+            document.getElementById('step2').style.display = step === 2 ? 'block' : 'none';
+            document.getElementById('step3').style.display = step === 3 ? 'block' : 'none';
+            document.getElementById('successState').style.display = 'none';
+
+            // Update description
+            const descriptions = {
+                1: 'Choose your service',
+                2: 'Select date & time',
+                3: 'Enter your details'
+            };
+            document.getElementById('stepDesc').textContent = descriptions[step];
+
+            if (step === 2) {
+                renderCalendar();
+            }
+
+            if (step === 3) {
+                updateBookingSummary();
+            }
+        }
+
+        function renderCalendar() {
+            const year = currentMonth.getFullYear();
+            const month = currentMonth.getMonth();
+
+            document.getElementById('curMonth').textContent = `${monthNames[month]} ${year}`;
+
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const startingDay = (firstDay.getDay() + 6) % 7; // Adjust for Monday start
+
+            const daysContainer = document.getElementById('calDays');
+            daysContainer.innerHTML = '';
+
+            // Empty cells
+            for (let i = 0; i < startingDay; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'day empty';
+                daysContainer.appendChild(empty);
+            }
+
+            // Days
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const dateObj = new Date(year, month, day);
+                const dayOfWeek = dateObj.getDay();
+                const dateStr = formatDate(dateObj);
+                const hours = businessHours[dayOfWeek];
+
+                const dayEl = document.createElement('div');
+                dayEl.className = 'day';
+                dayEl.textContent = day;
+
+                const isPast = dateObj < today;
+                const isClosed = !hours;
+
+                if (isPast || isClosed) {
+                    dayEl.classList.add('off');
+                } else {
+                    dayEl.onclick = () => selectDate(dateObj, dayEl);
+                    dayEl.classList.add('has');
+                }
+
+                if (selectedDate && dateStr === formatDate(selectedDate)) {
+                    dayEl.classList.add('sel');
+                }
+
+                daysContainer.appendChild(dayEl);
+            }
+        }
+
+        function chgMonth(direction) {
+            currentMonth.setMonth(currentMonth.getMonth() + direction);
+            renderCalendar();
+            document.getElementById('timesWrap').classList.remove('active');
+        }
+
+        function selectDate(date, element) {
+            selectedDate = date;
+            selectedTime = null;
+
+            document.querySelectorAll('.day').forEach(d => d.classList.remove('sel'));
+            element.classList.add('sel');
+
+            renderTimeSlots();
+
+            // Hide calendar, show times full view
+            document.querySelector('.cal-head').style.display = 'none';
+            document.querySelector('.weekdays').style.display = 'none';
+            document.getElementById('calDays').style.display = 'none';
+
+            const timesWrap = document.getElementById('timesWrap');
+            timesWrap.style.display = 'block';
+            timesWrap.style.marginTop = '1.5rem';
+        }
+
+        function backToCalendar() {
+            selectedDate = null;
+            selectedTime = null;
+
+            // Show calendar, hide times
+            document.querySelector('.cal-head').style.display = 'flex';
+            document.querySelector('.weekdays').style.display = 'grid';
+            document.getElementById('calDays').style.display = 'grid';
+            document.getElementById('timesWrap').style.display = 'none';
+
+            // Clear selection
+            document.querySelectorAll('.day').forEach(d => d.classList.remove('sel'));
+        }
+
+        function renderTimeSlots() {
+            const wrapper = document.getElementById('timesWrap');
+            const grid = document.getElementById('timesGrid');
+            const display = document.getElementById('dateDisp');
+
+            display.textContent = `Available times for ${formatDateDisplay(formatDate(selectedDate))}:`;
+
+            const dayOfWeek = selectedDate.getDay();
+            const hours = businessHours[dayOfWeek];
+
+            if (!hours) {
+                grid.innerHTML = '<p>Closed on this day</p>';
+                wrapper.classList.add('active');
+                return;
+            }
+
+            grid.innerHTML = '';
+
+            const [startH, startM] = hours.start.split(':').map(Number);
+            const [endH, endM] = hours.end.split(':').map(Number);
+
+            let current = new Date(selectedDate);
+            current.setHours(startH, startM, 0, 0);
+
+            const end = new Date(selectedDate);
+            end.setHours(endH, endM, 0, 0);
+
+            // Get booked times for this date
+            const dateStr = formatDate(selectedDate);
+            const bookedTimes = bookings
+                .filter(b => b.date === dateStr && b.status !== 'cancelled')
+                .map(b => b.time);
+
+            while (current < end) {
+                const timeStr = `${String(current.getHours()).padStart(2, '0')}:${String(current.getMinutes()).padStart(2, '0')}`;
+                const isBooked = bookedTimes.includes(timeStr);
+
+                const slot = document.createElement('div');
+                slot.className = 'time-btn';
+                slot.textContent = timeStr;
+
+                if (isBooked) {
+                    slot.classList.add('booked');
+                } else {
+                    slot.onclick = () => selectTime(timeStr, slot);
+                }
+
+                if (selectedTime === timeStr) {
+                    slot.classList.add('sel');
+                }
+
+                grid.appendChild(slot);
+
+                current.setMinutes(current.getMinutes() + 30);
+            }
+
+            wrapper.classList.add('active');
+        }
+
+        function selectTime(time, element) {
+            selectedTime = time;
+
+            document.querySelectorAll('.time-btn').forEach(s => s.classList.remove('sel'));
+            element.classList.add('sel');
+
+            setTimeout(() => goStep(3), 300);
+        }
+
+        function updateBookingSummary() {
+            if (selectedService && selectedDate && selectedTime) {
+                const summary = `${selectedService.name} - ${formatDateDisplay(formatDate(selectedDate))} at ${selectedTime} (€${selectedService.price})`;
+                document.getElementById('bookSum').textContent = summary;
+            }
+        }
+
+        function submitBook() {
+            const name = document.getElementById('cName').value.trim();
+            const email = document.getElementById('cEmail').value.trim();
+            const phone = document.getElementById('cPhone').value.trim();
+
+            // Clear previous errors
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('phoneError').textContent = '';
+            document.getElementById('cName').classList.remove('error');
+            document.getElementById('cEmail').classList.remove('error');
+            document.getElementById('cPhone').classList.remove('error');
+
+            let hasError = false;
+
+            // Validate name
+            if (!name) {
+                document.getElementById('nameError').textContent = 'Please enter your name';
+                document.getElementById('cName').classList.add('error');
+                hasError = true;
+            }
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email) {
+                document.getElementById('emailError').textContent = 'Please enter your email';
+                document.getElementById('cEmail').classList.add('error');
+                hasError = true;
+            } else if (!emailRegex.test(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                document.getElementById('cEmail').classList.add('error');
+                hasError = true;
+            }
+
+            // Validate phone format
+            const phoneRegex = /^[\d\s\-\+]{10,}$/;
+            if (!phone) {
+                document.getElementById('phoneError').textContent = 'Please enter your phone number';
+                document.getElementById('cPhone').classList.add('error');
+                hasError = true;
+            } else if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+                document.getElementById('phoneError').textContent = 'Please enter a valid phone number (at least 10 digits)';
+                document.getElementById('cPhone').classList.add('error');
+                hasError = true;
+            }
+
+            if (hasError) {
+                return;
+            }
+
+            // Add booking to demo data
+            const newBooking = {
+                id: bookings.length + 1,
+                client: name,
+                email: email,
+                phone: phone,
+                service: selectedService.name,
+                date: formatDate(selectedDate),
+                time: selectedTime,
+                status: 'confirmed'
+            };
+
+            bookings.push(newBooking);
+            updateStats();
+
+            // Show success
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step3').style.display = 'none';
+            document.getElementById('successState').style.display = 'block';
+
+            document.getElementById('stepDesc').textContent = 'Booking confirmed!';
+
+            // Update step indicators
+            for (let i = 1; i <= 3; i++) {
+                const stepNum = document.getElementById(`s${i}`);
+                stepNum.classList.add('done');
+                stepNum.classList.remove('active');
+                stepNum.innerHTML = '✓';
+            }
+        }
+
+        function resetBook() {
+            selectedService = null;
+            selectedDate = null;
+            selectedTime = null;
+            currentStep = 1;
+
+            document.getElementById('cName').value = '';
+            document.getElementById('cEmail').value = '';
+            document.getElementById('cPhone').value = '';
+
+            document.querySelectorAll('.svc-item').forEach(i => i.classList.remove('selected'));
+            document.querySelectorAll('.day').forEach(d => d.classList.remove('sel'));
+
+            // Reset calendar display
+            document.querySelector('.cal-head').style.display = 'flex';
+            document.querySelector('.weekdays').style.display = 'grid';
+            document.getElementById('calDays').style.display = 'grid';
+            document.getElementById('timesWrap').style.display = 'none';
+
+            goStep(1);
+        }
+
+        function viewAdminDashboard() {
+            const adminBtn = document.querySelector('.view-btn:nth-child(2)');
+            const customerBtn = document.querySelector('.view-btn:nth-child(1)');
+
+            customerBtn.classList.remove('active');
+            adminBtn.classList.add('active');
+
+            document.getElementById('customerView').style.display = 'none';
+            document.getElementById('adminView').style.display = 'block';
+
+            renderBookingsTable();
+        }
+
+        // ============================================
+        // ADMIN DASHBOARD
+        // ============================================
+        function renderBookingsTable(filter = 'all') {
+            const tbody = document.getElementById('bookBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            let filtered = bookings;
+            if (filter !== 'all') {
+                filtered = bookings.filter(b => b.status === filter);
+            }
+
+            // Sort by date and time
+            filtered.sort((a, b) => {
+                if (a.date !== b.date) return a.date.localeCompare(b.date);
+                return a.time.localeCompare(b.time);
+            });
+
+            filtered.forEach(booking => {
+                const row = document.createElement('tr');
+                const statusClass = booking.status === 'confirmed' ? 'confirmed' : 'completed';
+                row.innerHTML = `
+                    <td>
+                        <div class="client-info">
+                            <span class="client-name">${booking.client}</span>
+                            <span class="client-email">${booking.email}</span>
+                        </div>
+                    </td>
+                    <td>${booking.service}</td>
+                    <td>${formatDateDisplay(booking.date)} at ${booking.time}</td>
+                    <td><span class="status ${statusClass}">${capitalizeFirst(booking.status)}</span></td>
+                    <td>
+                        <div class="actions">
+                            ${booking.status === 'confirmed' ? `<button class="act complete" onclick="updateBookStatus(${booking.id}, 'completed')">Complete</button>` : ''}
+                            ${booking.status !== 'completed' && booking.status !== 'cancelled' ? `<button class="act cancel" onclick="updateBookStatus(${booking.id}, 'cancelled')">Cancel</button>` : ''}
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function filterBook(status, event) {
+            document.querySelectorAll('.filter').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            renderBookingsTable(status);
+        }
+
+        function updateBookStatus(id, newStatus) {
+            const booking = bookings.find(b => b.id === id);
+            if (booking) {
+                booking.status = newStatus;
+                renderBookingsTable();
+                updateStats();
+            }
+        }
+
+        function updateStats() {
+            const today = getTodayFormatted();
+            const todayBookings = bookings.filter(b => b.date === today && b.status === 'confirmed');
+
+            document.getElementById('todayCnt').textContent = todayBookings.length;
+
+            // Calculate week bookings
+            const weekStart = new Date();
+            weekStart.setDate(weekStart.getDate() - weekStart.getDay() + 1);
+            const weekEnd = new Date(weekStart);
+            weekEnd.setDate(weekEnd.getDate() + 6);
+
+            const weekBookings = bookings.filter(b => {
+                const d = new Date(b.date);
+                return d >= weekStart && d <= weekEnd && b.status === 'confirmed';
+            });
+
+            document.getElementById('weekCnt').textContent = weekBookings.length;
+
+            // Calculate total revenue (excluding cancelled bookings)
+            const confirmedBookings = bookings.filter(b => b.status === 'confirmed');
+            let totalRevenue = 0;
+            confirmedBookings.forEach(booking => {
+                const service = services.find(s => s.name === booking.service);
+                if (service) {
+                    totalRevenue += service.price;
+                }
+            });
+
+            document.getElementById('revenueCnt').textContent = `€${totalRevenue}`;
+        }
+
+        function capitalizeFirst(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        // ============================================
+        // ACCORDION & UI INTERACTIONS
+        // ============================================
+        let expandedService = null;
+
+        function toggleService(element) {
+            const allCards = document.querySelectorAll('.service-card');
+
+            // If clicking on the already expanded service, contract it
+            if (element === expandedService) {
+                element.classList.remove('expanded', 'active');
+                allCards.forEach(card => card.classList.remove('hidden-by-expansion'));
+                expandedService = null;
+                return;
+            }
+
+            // Close previously expanded service
+            if (expandedService) {
+                expandedService.classList.remove('expanded', 'active');
+            }
+
+            // Expand the clicked service and hide others
+            element.classList.add('expanded', 'active');
+            allCards.forEach(card => {
+                if (card !== element) {
+                    card.classList.add('hidden-by-expansion');
+                }
+            });
+            expandedService = element;
+        }
+
+        // Close expanded service when clicking outside
+        document.addEventListener('click', function (event) {
+            if (expandedService && !expandedService.contains(event.target)) {
+                // Check if click is outside the services grid
+                const servicesGrid = document.querySelector('.services-grid');
+                if (servicesGrid && !servicesGrid.contains(event.target)) {
+                    const allCards = document.querySelectorAll('.service-card');
+                    expandedService.classList.remove('expanded', 'active');
+                    allCards.forEach(card => card.classList.remove('hidden-by-expansion'));
+                    expandedService = null;
+                }
+            }
+        });
+
+        // ============================================
+        // MOBILE MENU & VIDEO LOADING
+        // ============================================
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Video loading
+        document.querySelectorAll('video').forEach(video => {
+            video.addEventListener('loadstart', function () {
+                const ph = document.getElementById(this.dataset.ph);
+                if (ph) ph.classList.add('loaded');
+            });
+        });
+
+        // ============================================
+        // INIT
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function () {
+            populateServices();
+            renderCalendar();
+            updateStats();
+        });
+    </script>
+</body>
+
+</html>
