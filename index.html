@@ -42,6 +42,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="iTrast/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="iTrast/favicon_io/site.webmanifest">
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="portfolio.css" />
 </head>
 
 <body>
@@ -51,8 +52,9 @@
             <a href="#" class="nav-logo"><img src="iTrast/iTrast.png" alt="iTrast Logo"></a>
             <div class="nav-links">
                 <a href="#services">Services</a>
-                <a href="#demo">Try it Out</a>
-                <a href="#contact" class="nav-cta">Contact</a>
+                <a href="#demo">Demo</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Contact</a>
             </div>
             <button class="mobile-menu-btn" onclick="toggleMenu()">
                 <span></span>
@@ -66,7 +68,8 @@
     <div class="mobile-menu" id="mobileMenu">
         <button class="mobile-menu-close" onclick="toggleMenu()">×</button>
         <a href="#services" onclick="toggleMenu()">Services</a>
-        <a href="#demo" onclick="toggleMenu()">Try it Out</a>
+        <a href="#demo" onclick="toggleMenu()">Demo</a>
+        <a href="#portfolio" onclick="toggleMenu()">Portfolio</a>
         <a href="#contact" onclick="toggleMenu()">Contact</a>
     </div>
 
@@ -207,25 +210,27 @@
                     from one dashboard.</p>
             </div>
             <div class="demo-container">
-                <!-- Chalk annotations -->
-                <div class="chalk-annotations-wrapper">
-                    <div class="chalk-annotation left">
-                        <span>Your customers see this!</span>
-                        <svg viewBox="0 0 35 28">
-                            <path d="M8 4 C6 10, 7 16, 12 22 M6 18 L12 22 L16 17" />
-                        </svg>
-                    </div>
-                    <div class="chalk-annotation right">
-                        <span>This is what YOU see!</span>
-                        <svg viewBox="0 0 35 28">
-                            <path d="M27 4 C29 10, 28 16, 23 22 M19 17 L23 22 L29 18" />
-                        </svg>
-                    </div>
-                </div>
-
                 <div class="view-toggle">
-                    <button class="view-btn active" onclick="showView('customer',event)">Customer View</button>
-                    <button class="view-btn" onclick="showView('admin',event)">Admin Dashboard</button>
+                    <div class="view-buttons">
+                        <div class="button-with-annotation">
+                            <div class="chalk-annotation left">
+                                <span>Your customers see this!</span>
+                                <svg viewBox="0 0 35 28">
+                                    <path d="M8 4 C6 10, 7 16, 12 22 M6 18 L12 22 L16 17" />
+                                </svg>
+                            </div>
+                            <button class="view-btn active" onclick="showView('customer',event)">Customer View</button>
+                        </div>
+                        <div class="button-with-annotation">
+                            <div class="chalk-annotation right">
+                                <span>This is what YOU see!</span>
+                                <svg viewBox="0 0 35 28">
+                                    <path d="M27 4 C29 10, 28 16, 23 22 M19 17 L23 22 L29 18" />
+                                </svg>
+                            </div>
+                            <button class="view-btn" onclick="showView('admin',event)">Admin Dashboard</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="demo-frame">
                     <div class="demo-bar">
@@ -314,10 +319,9 @@
                                             </svg></div>
                                         <h3>Booking Confirmed</h3>
                                         <p>You will receive a confirmation email shortly.</p>
-                                        <button class="submit-btn"
-                                            style="margin:1rem auto 0;background:transparent;color:#45A3D2;border:2px solid #45A3D2"
+                                        <button class="submit-btn submit-btn--outline"
                                             onclick="resetBook()">Book Another</button>
-                                        <button class="submit-btn" style="margin:0.5rem auto 0;background:#45A3D2"
+                                        <button class="submit-btn submit-btn--solid"
                                             onclick="viewAdminDashboard()">Verify it on Admin Dashboard</button>
                                     </div>
                                 </div>
@@ -327,7 +331,11 @@
                             <div class="admin-head">
                                 <h2 class="admin-title">Dashboard</h2>
                                 <div class="admin-user">
-                                    <div class="admin-avatar">A</div><span class="admin-name">Welcome, Admin!</span>
+                                    <div class="admin-avatar">
+                                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 3a4 4 0 110 8 4 4 0 010-8z" />
+                                        </svg>
+                                    </div><span class="admin-name">Welcome, Admin!</span>
                                 </div>
                             </div>
                             <div class="stats">
@@ -346,7 +354,12 @@
                             </div>
                             <div class="panel">
                                 <div class="panel-head">
-                                    <div class="panel-title">Upcoming Appointments</div>
+                                    <div class="panel-title">
+                                        <div class="panel-tabs">
+                                            <button class="panel-tab active" onclick="switchTableView('upcoming', event)">Upcoming Appointments</button>
+                                            <button class="panel-tab" onclick="switchTableView('history', event)">History</button>
+                                        </div>
+                                    </div>
                                     <div class="filters">
                                         <button class="filter active" onclick="filterBook('all',event)">All</button>
                                         <button class="filter"
@@ -359,11 +372,11 @@
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th style="background: #FFFECB;">Client</th>
-                                                <th style="background: #FFFECB;">Service</th>
-                                                <th style="background: #FFFECB;">Date & Time</th>
-                                                <th style="background: #FFFECB;">Status</th>
-                                                <th style="background: #FFFECB;">Actions</th>
+                                                <th>Client</th>
+                                                <th>Service</th>
+                                                <th>Date & Time</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody id="bookBody"></tbody>
@@ -373,6 +386,43 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-index" id="portfolio">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">Work</span>
+            </div>
+
+            <div class="bubbles-arena">
+
+                <!-- CRC Construction -->
+                <div class="bubble-container bubble-1">
+                    <a href="https://www.crcconstruction.gr/" target="_blank" rel="noopener noreferrer"
+                        class="bubble" aria-label="Visit CRC Construction website">
+                        <img src="assets/crc-logo.png" alt="CRC Construction logo">
+                    </a>
+                </div>
+
+                <!-- House Spa Holistic -->
+                <div class="bubble-container bubble-2">
+                    <a href="https://housespaholistic.com/home" target="_blank" rel="noopener noreferrer"
+                        class="bubble" aria-label="Visit House Spa Holistic website">
+                        <img src="assets/housespa-logo.png" alt="House Spa Holistic logo">
+                    </a>
+                </div>
+
+                <!-- Sell My Car Now -->
+                <div class="bubble-container bubble-3">
+                    <a href="https://sellmycarnow.gr/sell" target="_blank" rel="noopener noreferrer"
+                        class="bubble" aria-label="Visit Sell My Car Now website">
+                        <img src="assets/sellmycar-logo.png" alt="Sell My Car Now logo">
+                    </a>
+                </div>
+
             </div>
         </div>
     </section>

@@ -25,13 +25,28 @@ let selectedService = null;
 let selectedDate = null;
 let selectedTime = null;
 let currentStep = 1;
+let currentTableView = 'upcoming'; // Track which table view is active
+
+function getPastDateFormatted(daysAgo) {
+    const date = new Date();
+    date.setDate(date.getDate() - daysAgo);
+    return formatDate(date);
+}
 
 let bookings = [
-    { id: 1, client: 'Maria K.', email: 'maria@email.com', phone: '+30 694 111 2222', service: 'Classic Haircut', date: getTodayFormatted(), time: '10:00', status: 'confirmed' },
-    { id: 2, client: 'George P.', email: 'george@email.com', phone: '+30 694 333 4444', service: 'Haircut + Beard Trim', date: getTodayFormatted(), time: '11:30', status: 'confirmed' },
-    { id: 3, client: 'Anna S.', email: 'anna@email.com', phone: '+30 694 555 6666', service: 'Relaxing Massage', date: getTodayFormatted(), time: '14:00', status: 'confirmed' },
-    { id: 4, client: 'Nikos M.', email: 'nikos@email.com', phone: '+30 694 777 8888', service: 'Solo Workout', date: getTomorrowFormatted(), time: '09:30', status: 'confirmed' },
-    { id: 5, client: 'Elena T.', email: 'elena@email.com', phone: '+30 694 999 0000', service: 'Zumba Class', date: getTomorrowFormatted(), time: '12:00', status: 'confirmed' },
+    // Past completed bookings (History)
+    { id: 1, client: 'Sofia M.', email: 'sofia@email.com', phone: '+30 694 000 0001', service: 'Classic Haircut', date: getPastDateFormatted(15), time: '10:00', status: 'completed' },
+    { id: 2, client: 'Dimitris K.', email: 'dimitris@email.com', phone: '+30 694 000 0002', service: 'Haircut + Beard Trim', date: getPastDateFormatted(14), time: '14:30', status: 'completed' },
+    { id: 3, client: 'Katerina P.', email: 'katerina@email.com', phone: '+30 694 000 0003', service: 'Relaxing Massage', date: getPastDateFormatted(12), time: '11:00', status: 'completed' },
+    { id: 4, client: 'Vasilis T.', email: 'vasilis@email.com', phone: '+30 694 000 0004', service: 'Solo Workout', date: getPastDateFormatted(10), time: '09:00', status: 'completed' },
+    { id: 5, client: 'Maria S.', email: 'maria@email.com', phone: '+30 694 000 0005', service: 'Zumba Class', date: getPastDateFormatted(8), time: '18:00', status: 'cancelled' },
+    { id: 6, client: 'Panagiotis L.', email: 'panagiotis@email.com', phone: '+30 694 000 0006', service: 'Classic Haircut', date: getPastDateFormatted(5), time: '15:00', status: 'completed' },
+    // Upcoming bookings
+    { id: 7, client: 'Maria K.', email: 'maria@email.com', phone: '+30 694 111 2222', service: 'Classic Haircut', date: getTodayFormatted(), time: '10:00', status: 'confirmed' },
+    { id: 8, client: 'George P.', email: 'george@email.com', phone: '+30 694 333 4444', service: 'Haircut + Beard Trim', date: getTodayFormatted(), time: '11:30', status: 'confirmed' },
+    { id: 9, client: 'Anna S.', email: 'anna@email.com', phone: '+30 694 555 6666', service: 'Relaxing Massage', date: getTodayFormatted(), time: '14:00', status: 'confirmed' },
+    { id: 10, client: 'Nikos M.', email: 'nikos@email.com', phone: '+30 694 777 8888', service: 'Solo Workout', date: getTomorrowFormatted(), time: '09:30', status: 'confirmed' },
+    { id: 11, client: 'Elena T.', email: 'elena@email.com', phone: '+30 694 999 0000', service: 'Zumba Class', date: getTomorrowFormatted(), time: '12:00', status: 'confirmed' },
 ];
 
 // ============================================
@@ -73,14 +88,17 @@ function showView(view, event) {
 
     const customerView = document.getElementById('customerView');
     const adminView = document.getElementById('adminView');
+    const browserUrl = document.getElementById('browserUrl');
 
     if (view === 'customer') {
         customerView.style.display = 'block';
         adminView.style.display = 'none';
+        browserUrl.textContent = 'yourbusiness.com/booking';
         populateServices();
     } else {
         customerView.style.display = 'none';
         adminView.style.display = 'block';
+        browserUrl.textContent = 'yourbusiness.com/admin_dashboard';
         renderBookingsTable();
         updateStats();
     }
@@ -491,29 +509,54 @@ function resetBook() {
 }
 
 function viewAdminDashboard() {
-    const adminBtn = document.querySelector('.view-btn:nth-child(2)');
-    const customerBtn = document.querySelector('.view-btn:nth-child(1)');
+    const adminBtn = document.querySelector('.view-buttons .view-btn:nth-child(2)');
+    const customerBtn = document.querySelector('.view-buttons .view-btn:nth-child(1)');
 
     customerBtn.classList.remove('active');
     adminBtn.classList.add('active');
 
     document.getElementById('customerView').style.display = 'none';
     document.getElementById('adminView').style.display = 'block';
+    document.getElementById('browserUrl').textContent = 'yourbusiness.com/admin_dashboard';
 
     renderBookingsTable();
+    updateStats();
 }
 
 // ============================================
 // ADMIN DASHBOARD
 // ============================================
+function switchTableView(view, event) {
+    currentTableView = view;
+    
+    // Update active tab
+    document.querySelectorAll('.panel-tab').forEach(tab => tab.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    // Reset filter to 'all'
+    document.querySelectorAll('.filter').forEach(filter => filter.classList.remove('active'));
+    document.querySelectorAll('.filter')[0].classList.add('active');
+    
+    renderBookingsTable('all');
+}
+
 function renderBookingsTable(filter = 'all') {
     const tbody = document.getElementById('bookBody');
     if (!tbody) return;
     tbody.innerHTML = '';
 
     let filtered = bookings;
+    
+    // Filter by upcoming vs history
+    const today = getTodayFormatted();
+    if (currentTableView === 'upcoming') {
+        filtered = filtered.filter(b => b.date >= today);
+    } else if (currentTableView === 'history') {
+        filtered = filtered.filter(b => b.date < today);
+    }
+    
     if (filter !== 'all') {
-        filtered = bookings.filter(b => b.status === filter);
+        filtered = filtered.filter(b => b.status === filter);
     }
 
     // Sort by date and time
@@ -524,7 +567,7 @@ function renderBookingsTable(filter = 'all') {
 
     filtered.forEach(booking => {
         const row = document.createElement('tr');
-        const statusClass = booking.status === 'confirmed' ? 'confirmed' : 'completed';
+        const statusClass = booking.status === 'confirmed' ? 'confirmed' : (booking.status === 'completed' ? 'completed' : booking.status);
         row.innerHTML = `
                     <td>
                         <div class="client-info">
@@ -537,8 +580,8 @@ function renderBookingsTable(filter = 'all') {
                     <td><span class="status ${statusClass}">${capitalizeFirst(booking.status)}</span></td>
                     <td>
                         <div class="actions">
-                            ${booking.status === 'confirmed' ? `<button class="act complete" onclick="updateBookStatus(${booking.id}, 'completed')">Complete</button>` : ''}
-                            ${booking.status !== 'completed' && booking.status !== 'cancelled' ? `<button class="act cancel" onclick="updateBookStatus(${booking.id}, 'cancelled')">Cancel</button>` : ''}
+                            ${currentTableView === 'upcoming' && booking.status === 'confirmed' ? `<button class="act complete" onclick="updateBookStatus(${booking.id}, 'completed')">Complete</button>` : ''}
+                            ${currentTableView === 'upcoming' && booking.status !== 'completed' && booking.status !== 'cancelled' ? `<button class="act cancel" onclick="updateBookStatus(${booking.id}, 'cancelled')">Cancel</button>` : ''}
                         </div>
                     </td>
                 `;
