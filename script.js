@@ -595,6 +595,10 @@ function filterBook(status, event) {
     renderBookingsTable(status);
 }
 
+function filterBookFromSelect(select) {
+    renderBookingsTable(select.value);
+}
+
 function updateBookStatus(id, newStatus) {
     const booking = bookings.find(b => b.id === id);
     if (booking) {

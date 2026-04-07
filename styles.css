@@ -989,6 +989,8 @@ body {
     white-space: nowrap;
 }
 
+.btn-text-short { display: none; }
+
 .view-btn:hover {
     border-color: rgba(255,255,255,0.2);
     color: var(--text-primary);
@@ -1745,7 +1747,7 @@ body {
 }
 
 .panel-tab {
-    padding: 0.5rem 1rem;
+    padding: 0.1rem 0.2rem;
     border: none;
     background: transparent;
     color: #64748B;
@@ -1799,6 +1801,24 @@ body {
     background: rgba(69, 163, 210, 0.15);
     color: #45A3D2;
     border-color: rgba(69, 163, 210, 0.3);
+}
+
+.filter-select {
+    display: none;
+    padding: 0.1rem 0.1rem;
+    background: var(--bg-card);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #CBD5E1;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-family: inherit;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: rgba(69, 163, 210, 0.4);
 }
 
 /* ── Table ── */
@@ -2746,6 +2766,11 @@ footer p {
     .times-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .panel-tab {
+        padding: 0.4rem 0.65rem;
+        font-size: 0.8rem;
+    }
 }
 
 /* Larger phones (480px+) */
@@ -2756,5 +2781,49 @@ footer p {
 
     .times-grid {
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Restore original panel tab & filter values above mobile breakpoint */
+    .panel-tabs {
+        gap: 0;
+    }
+
+    .panel-tab {
+        padding: 0.1rem 0.2rem;
+        font-size: 0.75rem;
+    }
+
+    .filters {
+        gap: 0.3rem;
+    }
+
+    .filter {
+        display: inline-flex;
+        padding: 0.3rem 0.65rem;
+    }
+
+    .filter-select {
+        display: none;
+    }
+}
+
+/* Mobile demo button labels & filter dropdown (max-width: 479px) */
+@media (max-width: 479px) {
+    .btn-text-long { display: none; }
+    .btn-text-short { display: inline; }
+
+    .filters .filter { display: none; }
+    .filter-select { display: block; }
+}
+
+/* Narrow phones: strip panel-tab horizontal padding (max-width: 389px) */
+@media (max-width: 389px) {
+    .panel-tabs {
+        gap: 0.8rem;
+    }
+
+    .panel-tab {
+        padding-left: 0;
+        padding-right: 0;
     }
 }

@@ -219,7 +219,7 @@
                                     <path d="M8 4 C6 10, 7 16, 12 22 M6 18 L12 22 L16 17" />
                                 </svg>
                             </div>
-                            <button class="view-btn active" onclick="showView('customer',event)">Customer View</button>
+                            <button class="view-btn active" onclick="showView('customer',event)"><span class="btn-text-long">Customer View</span><span class="btn-text-short">Customer</span></button>
                         </div>
                         <div class="button-with-annotation">
                             <div class="chalk-annotation right">
@@ -228,7 +228,7 @@
                                     <path d="M27 4 C29 10, 28 16, 23 22 M19 17 L23 22 L29 18" />
                                 </svg>
                             </div>
-                            <button class="view-btn" onclick="showView('admin',event)">Admin Dashboard</button>
+                            <button class="view-btn" onclick="showView('admin',event)"><span class="btn-text-long">Admin Dashboard</span><span class="btn-text-short">Admin</span></button>
                         </div>
                     </div>
                 </div>
@@ -356,7 +356,7 @@
                                 <div class="panel-head">
                                     <div class="panel-title">
                                         <div class="panel-tabs">
-                                            <button class="panel-tab active" onclick="switchTableView('upcoming', event)">Upcoming Appointments</button>
+                                            <button class="panel-tab active" onclick="switchTableView('upcoming', event)">Upcoming</button>
                                             <button class="panel-tab" onclick="switchTableView('history', event)">History</button>
                                         </div>
                                     </div>
@@ -366,6 +366,11 @@
                                             onclick="filterBook('confirmed',event)">Confirmed</button>
                                         <button class="filter"
                                             onclick="filterBook('cancelled',event)">Cancelled</button>
+                                        <select class="filter-select" onchange="filterBookFromSelect(this)">
+                                            <option value="all">All</option>
+                                            <option value="confirmed">Confirmed</option>
+                                            <option value="cancelled">Cancelled</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="table-wrap">
