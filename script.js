@@ -84,7 +84,7 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
 // ============================================
 function showView(view, event) {
     document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+    event.currentTarget.classList.add('active');
 
     const customerView = document.getElementById('customerView');
     const adminView = document.getElementById('adminView');
@@ -509,8 +509,8 @@ function resetBook() {
 }
 
 function viewAdminDashboard() {
-    const adminBtn = document.querySelector('.view-buttons .view-btn:nth-child(2)');
-    const customerBtn = document.querySelector('.view-buttons .view-btn:nth-child(1)');
+    const adminBtn = document.getElementById('adminViewBtn');
+    const customerBtn = document.getElementById('customerViewBtn');
 
     customerBtn.classList.remove('active');
     adminBtn.classList.add('active');
